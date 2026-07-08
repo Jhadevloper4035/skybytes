@@ -5,6 +5,9 @@ DEV_COMPOSE := $(COMPOSE) -f compose.dev.yml
 PROD_COMPOSE := $(COMPOSE) -f compose.production.yml
 WEB := web
 LOCAL_WEB_IMAGE ?= skybyte-web:local
+SSL_EMAIL ?= info@skybytedevelopers.com
+SSL_DOMAINS := -d skybytedevelopers.com -d www.skybytedevelopers.com
+CERTBOT_IMAGE ?= certbot/certbot:latest
 
 .DEFAULT_GOAL := help
 
@@ -20,9 +23,11 @@ help:
 	@echo ""
 	@echo "  make prod           Start production stack"
 	@echo "  make prod-build     Build and start production stack"
-	@echo "  make prod-pull      Pull Docker Hub image and start production stack"
+	@echo "  make prod-pull      Pull fresh images, recreate production stack, and prune old containers/images"
 	@echo "  make prod-down      Stop production stack"
 	@echo "  make prod-logs      Follow production logs"
+	@echo "  make ssl-init       Generate first Let's Encrypt SSL certificate"
+	@echo "  make ssl-renew      Renew SSL certificate and reload nginx"
 	@echo ""
 	@echo "  make build          Build web image"
 	@echo "  make compose-check  Validate Docker Compose config"
@@ -67,8 +72,11 @@ prod-build:
 
 .PHONY: prod-pull
 prod-pull:
+	$(PROD_COMPOSE) down --remove-orphans
 	$(PROD_COMPOSE) pull
-	$(PROD_COMPOSE) up -d
+	$(PROD_COMPOSE) up -d --force-recreate --remove-orphans
+	docker container prune -f
+	docker image prune -af
 
 .PHONY: prod-down
 prod-down:
@@ -77,6 +85,19 @@ prod-down:
 .PHONY: prod-logs
 prod-logs:
 	$(PROD_COMPOSE) logs -f
+
+.PHONY: ssl-init
+ssl-init:
+	mkdir -p /var/www/certbot /etc/letsencrypt
+	$(PROD_COMPOSE) stop nginx || true
+	docker run --rm -p 80:80 -v /etc/letsencrypt:/etc/letsencrypt -v /var/www/certbot:/var/www/certbot $(CERTBOT_IMAGE) certonly --standalone --non-interactive --agree-tos --email $(SSL_EMAIL) $(SSL_DOMAINS)
+	$(PROD_COMPOSE) up -d nginx
+
+.PHONY: ssl-renew
+ssl-renew:
+	mkdir -p /var/www/certbot /etc/letsencrypt
+	docker run --rm -v /etc/letsencrypt:/etc/letsencrypt -v /var/www/certbot:/var/www/certbot $(CERTBOT_IMAGE) renew --webroot -w /var/www/certbot
+	$(PROD_COMPOSE) exec nginx nginx -s reload
 
 .PHONY: build
 build:

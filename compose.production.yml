@@ -9,6 +9,7 @@ services:
       DJANGO_DEBUG: ${DJANGO_DEBUG:-false}
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1,skybytedevelopers.com,www.skybytedevelopers.com}
       DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:-https://skybytedevelopers.com,https://www.skybytedevelopers.com}
+      DJANGO_SECURE_SSL_REDIRECT: ${DJANGO_SECURE_SSL_REDIRECT:-true}
       DB_ENGINE: ${DB_ENGINE:-django.db.backends.mysql}
       DB_NAME: ${DB_NAME:-frinew2025data}
       DB_USER: ${DB_USER:-root}
@@ -44,7 +45,7 @@ services:
       - web
 
   db:
-    image: mysql:8.4
+    image: ${MYSQL_IMAGE:-mysql:8.4}
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_NAME:-frinew2025data}
