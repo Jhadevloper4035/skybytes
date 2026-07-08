@@ -21,13 +21,13 @@ ENV/
 .env.*
 .env.swp
 env.development.example
-!.env.example
-!.env.development.example
 *.local
 *.secret
 *.secrets
 secrets/
 credentials/
+
+deployment-guide.html
 
 # Certificates and keys
 *.pem

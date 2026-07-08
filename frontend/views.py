@@ -34,7 +34,7 @@ def privacy_policy(request):
 
 def home_loan(request):
     """Render the home loan page."""
-    return render(request, 'pages/home-loan-new.html')
+    return render(request, 'pages/home-loan.html')
 
 def disclaimer(request):
     """Render the disclaimer page."""

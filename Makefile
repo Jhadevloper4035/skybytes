@@ -1,19 +1,16 @@
 SHELL := /bin/sh
 
 COMPOSE := docker compose
-DEV_COMPOSE := $(COMPOSE) -f compose.yml -f compose.dev.yml
-PROD_COMPOSE := $(COMPOSE)
-DEPLOY_COMPOSE := $(COMPOSE) -f compose.production.yml
+DEV_COMPOSE := $(COMPOSE) -f compose.dev.yml
+PROD_COMPOSE := $(COMPOSE) -f compose.production.yml
 WEB := web
+LOCAL_WEB_IMAGE ?= skybyte-web:local
 
 .DEFAULT_GOAL := help
 
 .PHONY: help
 help:
 	@echo "Available commands:"
-	@echo ""
-	@echo "  make init-dev        Create .env from .env.development.example"
-	@echo "  make init-prod       Create .env from .env.example"
 	@echo ""
 	@echo "  make dev-up         Start development stack in detached mode"
 	@echo "  make dev            Start development stack in foreground"
@@ -38,16 +35,6 @@ help:
 	@echo "  make bash           Open container shell"
 	@echo "  make status         Show compose service status"
 	@echo "  make clean          Stop stack and remove orphan containers"
-
-.PHONY: init-dev
-init-dev:
-	@test -f .env || cp .env.development.example .env
-	@echo ".env is ready for development"
-
-.PHONY: init-prod
-init-prod:
-	@test -f .env || cp .env.example .env
-	@echo ".env is ready; edit production secrets before deploying"
 
 .PHONY: dev-up
 dev-up:
@@ -75,31 +62,32 @@ prod:
 
 .PHONY: prod-build
 prod-build:
-	$(PROD_COMPOSE) up -d --build
+	docker build -t $(LOCAL_WEB_IMAGE) .
+	WEB_IMAGE=$(LOCAL_WEB_IMAGE) $(PROD_COMPOSE) up -d
 
 .PHONY: prod-pull
 prod-pull:
-	$(DEPLOY_COMPOSE) pull
-	$(DEPLOY_COMPOSE) up -d
+	$(PROD_COMPOSE) pull
+	$(PROD_COMPOSE) up -d
 
 .PHONY: prod-down
 prod-down:
-	$(DEPLOY_COMPOSE) down
+	$(PROD_COMPOSE) down
 
 .PHONY: prod-logs
 prod-logs:
-	$(DEPLOY_COMPOSE) logs -f
+	$(PROD_COMPOSE) logs -f
 
 .PHONY: build
 build:
-	$(PROD_COMPOSE) build $(WEB)
+	docker build -t $(LOCAL_WEB_IMAGE) .
 
 .PHONY: compose-check
 compose-check:
 	$(DEV_COMPOSE) config
 
 .PHONY: ci
-ci: init-dev compose-check build check
+ci: compose-check build check
 
 .PHONY: check
 check:
@@ -107,7 +95,7 @@ check:
 
 .PHONY: check-deploy
 check-deploy:
-	$(PROD_COMPOSE) run --rm --no-deps $(WEB) python manage.py check --deploy
+	WEB_IMAGE=$(LOCAL_WEB_IMAGE) $(PROD_COMPOSE) run --rm --no-deps $(WEB) python manage.py check --deploy
 
 .PHONY: migrate
 migrate:
@@ -127,8 +115,8 @@ bash:
 
 .PHONY: status
 status:
-	$(DEPLOY_COMPOSE) ps
+	$(PROD_COMPOSE) ps
 
 .PHONY: clean
 clean:
-	$(DEPLOY_COMPOSE) down --remove-orphans
+	$(PROD_COMPOSE) down --remove-orphans
