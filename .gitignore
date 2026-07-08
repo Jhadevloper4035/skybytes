@@ -19,6 +19,8 @@ ENV/
 # Local environment and secrets
 .env
 .env.*
+.env.swp
+env.development.example
 !.env.example
 !.env.development.example
 *.local
