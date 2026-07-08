@@ -80,9 +80,9 @@ jobs:
           test -n "$DOCKERHUB_TOKEN" || { echo "::error::Missing DOCKERHUB_TOKEN"; exit 1; }
           test -n "$PROD_ENV_FILE" || { echo "::error::Missing PROD_ENV_FILE"; exit 1; }
           case "$DROPLET_SSH_KEY" in
-            *"BEGIN OPENSSH PRIVATE KEY"*|*"BEGIN RSA PRIVATE KEY"*|*"BEGIN EC PRIVATE KEY"*) ;;
+            *"BEGIN "*"PRIVATE KEY"*"END "*"PRIVATE KEY"*) ;;
             *)
-              echo "::error::DROPLET_SSH_KEY must contain the full private key file, not the public key or ssh command."
+              echo "::error::DROPLET_SSH_KEY must contain the full private key file, including BEGIN/END PRIVATE KEY lines."
               exit 1
               ;;
           esac

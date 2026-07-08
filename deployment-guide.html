@@ -312,7 +312,8 @@ free -h</code></pre>
       </div>
 
       <h3>How to copy <code>DROPLET_SSH_KEY</code></h3>
-      <p>The value must start with <code>-----BEGIN OPENSSH PRIVATE KEY-----</code> and end with
+      <p>The value must include the full private key block. It usually starts with
+        <code>-----BEGIN OPENSSH PRIVATE KEY-----</code> and ends with
         <code>-----END OPENSSH PRIVATE KEY-----</code>.</p>
       <pre><code>cat ~/.ssh/id_ed25519</code></pre>
       <p>Copy the full output into the GitHub secret named <code>DROPLET_SSH_KEY</code>, including the first and last
