@@ -1,0 +1,426 @@
+{% extends 'include/base.html' %}
+{% load static %}
+
+{% block title %}Home Loan - Finance Your Dream Property{% endblock %}
+{% block meta_description %}Get home loan assistance for your property purchase. Compare rates, check eligibility, and apply for home loans with our partner banks.{% endblock %}
+{% block meta_keywords %}home loan, housing finance, property loan, mortgage, home loan rates, loan eligibility{% endblock %}
+
+{% block body_class %}inner-pages hd-white{% endblock %}
+
+{% block content %}
+<!-- START SECTION HEADINGS -->
+<section class="headings">
+    <div class="text-heading text-center">
+        <div class="container">
+            <h1>Home Loan Services</h1>
+            <h2><a href="{% url 'index' %}">Home</a> &nbsp;/&nbsp; Home Loan</h2>
+        </div>
+    </div>
+</section>
+<!-- END SECTION HEADINGS -->
+
+<!-- START SECTION HOME LOAN -->
+<section class="blog blog-section bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="terms-content">
+                    <h2 class="mb-4">Finance Your Dream Home with Easy Home Loans</h2>
+                    <p class="lead mb-4">We help you realize your dream of owning a home with hassle-free home loan assistance. Our tie-ups with leading banks and financial institutions ensure you get the best rates and terms.</p>
+
+                    <div class="row mb-5">
+                        <div class="col-md-6 mb-4">
+                            <div class="feature-box p-4 h-100 border rounded">
+                                <div class="icon-box mb-3">
+                                    <i class="fa fa-percent fa-3x text-primary"></i>
+                                </div>
+                                <h4>Competitive Interest Rates</h4>
+                                <p class="mb-0">Get home loans at competitive interest rates starting from as low as 8.5% per annum from our partner banks.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="feature-box p-4 h-100 border rounded">
+                                <div class="icon-box mb-3">
+                                    <i class="fa fa-clock fa-3x text-success"></i>
+                                </div>
+                                <h4>Quick Processing</h4>
+                                <p class="mb-0">Fast-track approval process with minimal documentation. Get your loan approved in as little as 48 hours.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="feature-box p-4 h-100 border rounded">
+                                <div class="icon-box mb-3">
+                                    <i class="fa fa-hand-holding-usd fa-3x text-warning"></i>
+                                </div>
+                                <h4>Up to 90% Financing</h4>
+                                <p class="mb-0">Get financing up to 90% of the property value with flexible repayment tenure up to 30 years.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="feature-box p-4 h-100 border rounded">
+                                <div class="icon-box mb-3">
+                                    <i class="fa fa-file-alt fa-3x text-info"></i>
+                                </div>
+                                <h4>Minimal Documentation</h4>
+                                <p class="mb-0">Simple documentation process with assistance at every step. We help you prepare and submit all required documents.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-5 mb-3">Why Choose Our Home Loan Services?</h3>
+                    <ul class="mb-4">
+                        <li class="mb-2"><i class="fa fa-check-circle text-success mr-2"></i> <strong>Expert Guidance:</strong> Our loan advisors provide personalized assistance throughout the loan process</li>
+                        <li class="mb-2"><i class="fa fa-check-circle text-success mr-2"></i> <strong>Multiple Lender Options:</strong> Compare offers from 15+ banks and NBFCs to find the best deal</li>
+                        <li class="mb-2"><i class="fa fa-check-circle text-success mr-2"></i> <strong>End-to-End Support:</strong> From application to disbursement, we're with you every step</li>
+                        <li class="mb-2"><i class="fa fa-check-circle text-success mr-2"></i> <strong>Tax Benefits:</strong> Maximize tax deductions under Section 80C and Section 24(b)</li>
+                        <li class="mb-2"><i class="fa fa-check-circle text-success mr-2"></i> <strong>No Hidden Charges:</strong> Transparent pricing with no hidden fees or charges</li>
+                        <li class="mb-2"><i class="fa fa-check-circle text-success mr-2"></i> <strong>Balance Transfer Options:</strong> Switch to lower interest rates with our balance transfer facility</li>
+                    </ul>
+
+                    <h3 class="mt-5 mb-3">Home Loan Eligibility</h3>
+                    <p class="mb-3">To qualify for a home loan, you should meet the following basic criteria:</p>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5 class="mb-3">For Salaried Individuals:</h5>
+                            <ul>
+                                <li>Age: 21 to 65 years</li>
+                                <li>Minimum monthly income: ₹25,000</li>
+                                <li>Employment: 2+ years of work experience</li>
+                                <li>Credit score: 750 or above</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="mb-3">For Self-Employed:</h5>
+                            <ul>
+                                <li>Age: 21 to 65 years</li>
+                                <li>Business vintage: 3+ years</li>
+                                <li>Annual income: ₹3 lakhs or above</li>
+                                <li>Credit score: 750 or above</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-5 mb-3">Required Documents</h3>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5 class="mb-3">Identity & Address Proof:</h5>
+                            <ul>
+                                <li>PAN Card (mandatory)</li>
+                                <li>Aadhaar Card</li>
+                                <li>Passport / Driving License / Voter ID</li>
+                                <li>Recent utility bills (for address proof)</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="mb-3">Income Proof:</h5>
+                            <ul>
+                                <li>Last 6 months' salary slips</li>
+                                <li>Last 2 years' ITR with computation</li>
+                                <li>Form 16 (for salaried)</li>
+                                <li>Bank statements (last 6 months)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-5 mb-3">Our Partner Banks & NBFCs</h3>
+                    <p class="mb-4">We have partnerships with leading financial institutions including:</p>
+                    <div class="row mb-4">
+                        <div class="col-md-4 col-sm-6 mb-3">
+                            <div class="partner-box p-3 border rounded text-center">
+                                <p class="mb-0 font-weight-bold">State Bank of India</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 mb-3">
+                            <div class="partner-box p-3 border rounded text-center">
+                                <p class="mb-0 font-weight-bold">HDFC Bank</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 mb-3">
+                            <div class="partner-box p-3 border rounded text-center">
+                                <p class="mb-0 font-weight-bold">ICICI Bank</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 mb-3">
+                            <div class="partner-box p-3 border rounded text-center">
+                                <p class="mb-0 font-weight-bold">Axis Bank</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 mb-3">
+                            <div class="partner-box p-3 border rounded text-center">
+                                <p class="mb-0 font-weight-bold">LIC Housing Finance</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 mb-3">
+                            <div class="partner-box p-3 border rounded text-center">
+                                <p class="mb-0 font-weight-bold">And Many More...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-5 mb-3">Home Loan Process</h3>
+                    <div class="process-steps mb-5">
+                        <div class="step-item mb-4">
+                            <div class="d-flex">
+                                <div class="step-number mr-3">
+                                    <span class="badge badge-primary badge-pill p-3">1</span>
+                                </div>
+                                <div>
+                                    <h5>Check Eligibility</h5>
+                                    <p class="mb-0">Use our eligibility calculator to check your loan eligibility and know how much you can borrow.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-item mb-4">
+                            <div class="d-flex">
+                                <div class="step-number mr-3">
+                                    <span class="badge badge-primary badge-pill p-3">2</span>
+                                </div>
+                                <div>
+                                    <h5>Compare Offers</h5>
+                                    <p class="mb-0">Compare interest rates, processing fees, and other charges from multiple lenders.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-item mb-4">
+                            <div class="d-flex">
+                                <div class="step-number mr-3">
+                                    <span class="badge badge-primary badge-pill p-3">3</span>
+                                </div>
+                                <div>
+                                    <h5>Submit Application</h5>
+                                    <p class="mb-0">Fill out the application form and submit required documents through our portal.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-item mb-4">
+                            <div class="d-flex">
+                                <div class="step-number mr-3">
+                                    <span class="badge badge-primary badge-pill p-3">4</span>
+                                </div>
+                                <div>
+                                    <h5>Verification & Approval</h5>
+                                    <p class="mb-0">Bank verifies your documents and property, followed by loan approval.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-item mb-4">
+                            <div class="d-flex">
+                                <div class="step-number mr-3">
+                                    <span class="badge badge-primary badge-pill p-3">5</span>
+                                </div>
+                                <div>
+                                    <h5>Loan Disbursement</h5>
+                                    <p class="mb-0">Once approved, the loan amount is disbursed to the seller or builder's account.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <h5 class="mb-2"><i class="fa fa-info-circle mr-2"></i>Important Note</h5>
+                        <p class="mb-0">Loan approval and terms are subject to bank's discretion and eligibility criteria. Interest rates and processing fees mentioned are indicative and may vary based on individual profile and bank policies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="col-lg-4 col-md-12">
+                <div class="widget">
+                    <div class="widget-boxed main-search-field">
+                        <div class="widget-boxed-header">
+                            <h4>Apply for Home Loan</h4>
+                        </div>
+                        <div class="widget-boxed-body">
+                            <div class="sidebar-widget">
+                                <form name="loan_form" method="post" action="#">
+                                    <div class="form-group">
+                                        <input type="text" name="full_name" class="form-control" placeholder="Full Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+                                    </div>
+                                    <div class="form-group" sty>
+                                        <select name="employment_type" class="form-control" required>
+                                            <option value="">Employment Type</option>
+                                            <option value="salaried">Salaried</option>
+                                            <option value="self-employed">Self Employed</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" >
+                                        <input type="number" name="monthly_income" class="form-control" placeholder="Monthly Income (₹)" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" name="loan_amount" class="form-control" placeholder="Loan Amount Required (₹)" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <select name="property_type" class="form-control" required>
+                                            <option value="">Property Type</option>
+                                            <option value="residential">Residential</option>
+                                            <option value="commercial">Commercial</option>
+                                            <option value="plot">Plot/Land</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="message" class="form-control" rows="3" placeholder="Additional Information"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+                                    <p class="mt-3 mb-0"><small class="text-muted">Our loan advisor will contact you within 24 hours.</small></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-boxed mt-4">
+                        <div class="widget-boxed-header">
+                            <h4>EMI Calculator</h4>
+                        </div>
+                        <div class="widget-boxed-body">
+                            <p class="mb-3">Calculate your estimated monthly EMI for your home loan.</p>
+                            <div class="emi-info">
+                                <div class="mb-3">
+                                    <label>Loan Amount: <strong>₹<span id="loanAmountLabel">5000000</span></strong></label>
+                                    <input id="loanRange" type="range" class="form-control-range" min="500000" max="50000000" step="100000" value="5000000">
+                                </div>
+                                <div class="mb-3">
+                                    <label>Interest Rate: <strong><span id="rateLabel">8.5</span>%</strong></label>
+                                    <input id="rateRange" type="range" class="form-control-range" min="7" max="15" step="0.1" value="8.5">
+                                </div>
+                                <div class="mb-3">
+                                    <label>Tenure: <strong><span id="tenureLabel">20</span> years</strong></label>
+                                    <input id="tenureRange" type="range" class="form-control-range" min="5" max="30" step="1" value="20">
+                                </div>
+                                <div class="emi-result bg-light p-3 rounded text-center">
+                                    <h5 class="mb-2">Estimated EMI</h5>
+                                    <h3 class="text-primary mb-0">₹<span id="emiResult">0</span></h3>
+                                    <small class="text-muted">per month</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-boxed mt-4">
+                        <div class="widget-boxed-header">
+                            <h4>Need Help?</h4>
+                        </div>
+                        <div class="widget-boxed-body">
+                            <p class="mb-3">Our loan experts are here to help you!</p>
+                            <p class="mb-2"><i class="fa fa-phone text-primary mr-2"></i> <strong>+91-9911555216</strong></p>
+                            <p class="mb-2"><i class="fa fa-envelope text-primary mr-2"></i> <strong>loan@skybyte.com</strong></p>
+                            <p class="mb-0"><small>Mon - Sat: 10:00 AM - 7:00 PM</small></p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+<!-- END SECTION HOME LOAN -->
+
+<style>
+.feature-box {
+    transition: all 0.3s ease;
+}
+.feature-box:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+}
+.partner-box {
+    transition: all 0.3s ease;
+}
+.partner-box:hover {
+    background: #f8f9fa;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.step-number .badge {
+    font-size: 1.2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.widget-boxed {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.terms-content h3 {
+    color: #274abb;
+    font-weight: 600;
+}
+.terms-content ul {
+    line-height: 2;
+}
+/* Additional fixes for form controls and EMI calculator */
+.widget-boxed .form-group > select.form-control,
+.widget-boxed .form-group > input.form-control,
+.widget-boxed .form-group > textarea.form-control {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+/* .widget-boxed .form-group { margin-bottom: 1.5rem !important; } */
+.widget-boxed .form-control-range { width: 100%; }
+.widget-boxed .form-control { padding: .75rem 1rem; min-height: 46px; }
+.widget-boxed .form-group > select.form-control { position: relative; z-index: 2; padding-right: 2.5rem; }
+.widget-boxed .form-group > input.form-control, .widget-boxed .form-group > textarea.form-control { position: relative; z-index: 1; }
+.emi-info label strong { float: right; }
+.emi-result h3 { font-size: 1.3rem; }
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const loanRange = document.getElementById('loanRange');
+    const rateRange = document.getElementById('rateRange');
+    const tenureRange = document.getElementById('tenureRange');
+    const loanLabel = document.getElementById('loanAmountLabel');
+    const rateLabel = document.getElementById('rateLabel');
+    const tenureLabel = document.getElementById('tenureLabel');
+    const emiResult = document.getElementById('emiResult');
+
+    function formatINR(value) {
+        try {
+            return Number(value).toLocaleString('en-IN');
+        } catch (e) {
+            return value;
+        }
+    }
+
+    function calculateEMI() {
+        const P = Number(loanRange.value); // principal
+        const annualRate = Number(rateRange.value); // percent
+        const years = Number(tenureRange.value);
+        const r = annualRate / 100 / 12; // monthly rate
+        const n = years * 12; // total months
+        let emi = 0;
+        if (r === 0) {
+            emi = P / n;
+        } else {
+            const factor = Math.pow(1 + r, n);
+            emi = (P * r * factor) / (factor - 1);
+        }
+        emiResult.textContent = formatINR(Math.round(emi));
+    }
+
+    function updateLabels() {
+        loanLabel.textContent = formatINR(loanRange.value);
+        rateLabel.textContent = parseFloat(rateRange.value).toFixed(1);
+        tenureLabel.textContent = tenureRange.value;
+    }
+
+    [loanRange, rateRange, tenureRange].forEach(function (el) {
+        el.addEventListener('input', function () {
+            updateLabels();
+            calculateEMI();
+        });
+    });
+
+    // initialize
+    updateLabels();
+    calculateEMI();
+});
+</script>
+
+{% endblock %}

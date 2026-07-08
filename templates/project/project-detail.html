@@ -1,0 +1,652 @@
+{% extends 'include/includes.html' %}
+{% load static %}
+
+{% block title %}{{ project.meta_title|default:project.name }}{% endblock %}
+{% block meta_description %}{{ project.meta_desc|default:project.name }}{% endblock %}
+{% block meta_keywords %}{{ project.keyword|default:'' }}{% endblock %}
+
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ project.meta_title|default:project.name }}{% endblock %}
+{% block og_description %}{{ project.meta_desc|default:project.name }}{% endblock %}
+{% block og_image %}{% if project.projectimage.all %}{{ request.scheme }}://{{ request.get_host }}{{ project.projectimage.all.0.project_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/coming-soon-banner.jpeg' %}{% endif %}{% endblock %}
+{% block og_image_alt %}{{ project.name }}{% endblock %}
+{% block twitter_title %}{{ project.meta_title|default:project.name }}{% endblock %}
+{% block twitter_description %}{{ project.meta_desc|default:project.name }}{% endblock %}
+{% block twitter_image %}{% if project.projectimage.all %}{{ request.scheme }}://{{ request.get_host }}{{ project.projectimage.all.0.project_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/coming-soon-banner.jpeg' %}{% endif %}{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": "{{ project.name|escapejs }}",
+    "description": "{{ project.meta_desc|default:project.name|escapejs }}",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
+    "image": "{% if project.projectimage.all %}{{ request.scheme }}://{{ request.get_host }}{{ project.projectimage.all.0.project_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/coming-soon-banner.jpeg' %}{% endif %}",
+    "provider": {
+        "@type": "Organization",
+        "name": "SkyByte Developers",
+        "url": "{{ request.scheme }}://{{ request.get_host }}/"
+    }{% if project.city %},
+    "contentLocation": {
+        "@type": "Place",
+        "name": "{{ project.city.name|escapejs }}, Haryana"
+    }{% endif %}
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "{{ request.scheme }}://{{ request.get_host }}/project/" },
+        { "@type": "ListItem", "position": 3, "name": "{{ project.name|escapejs }}", "item": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    window.currentProjectSlug = "{{ project.slug|escapejs }}";
+</script>
+{% endblock %}
+
+{% block content %}
+<main>
+        <section class="page-layout">
+            <!-- <div class="maximum-width container-fluid">
+                <div class="d-flex flex-column align-items-center">
+                
+                    <h1 class="page-title">SkyByte Sector 80, Sonipat</h1>
+                    
+                </div>
+            </div> -->
+            <div>
+                <div class="w-100 h-100 overflow-hidden">
+                    <img src="{% static 'images/coming-soon-banner.jpeg' %}" alt="SkyByte Sector 80 Sonipat - Project Banner" class="page-layout-img">
+                </div>
+                <div class="about-nav d-flex gap-2 align-items-center justify-content-center mt-3">
+
+                    <a href="#!" class="about-link nav-link open-popup" data-source="brochure">Download Brochure</a>
+                    <a href="#!" class="about-link nav-link open-popup" data-source="enquire">Enquire Now</a>
+
+                </div>
+            </div>
+        </section>
+        <section class="section  position-relative bt" id="who">
+            <div class="container-fluid maximum-width mx-auto">
+                <div class="row align-items-top">
+                    <!-- Content Column -->
+                    <div class="col-lg-6 mt-3 mt-lg-0">
+                        <span class="section-subtitle">
+                            About the Project
+                        </span>
+                        <h1 class="section-title section-heading mb-4">
+                            {{project.name}} <br><span>{{project.location.name}}, Haryana</span>
+                        </h1>
+                        <!-- <p class="content-text mb-2">
+                            SkyByte Sector 80 is a thoughtfully planned commercial development designed to offer modern
+                            infrastructure and strategic connectivity in one of Sonipat’s fastest-growing locations.
+
+
+                        </p>
+                        <p class="content-text mb-2 mr-3">With a strong focus on accessibility, infrastructure, and
+                            long-term value, the project features well-planned commercial plots suitable for retail
+                            outlets, offices, and investment opportunities. Its prime location and carefully designed
+                            layout make SkyByte Sector 80 an ideal destination for businesses and investors looking to
+                            grow in a rapidly developing corridor.</p> -->
+                        {{project.description|safe}}
+
+
+                    </div>
+                    <!-- Image Column -->
+                    <div class="col-lg-6 px-lg-5">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="project-card">
+                                    <div class="text-stroke section-title">
+                                        1
+                                    </div>
+                                    <div>
+                                        <h5 class="section-title mb-3">Prime Location</h5>
+                                        <p>Strategically located in Sector 80, offering excellent accessibility and
+                                            connectivity.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="project-card">
+
+                                    <div class="text-stroke section-title">
+                                        2
+                                    </div>
+                                    <div>
+                                        <h5 class="section-title mb-3">Premium Residential Plots</h5>
+                                        <p>Well-planned plots suitable for residential development, offering a comfortable and modern living environment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="project-card">
+                                    <div class="text-stroke section-title">
+                                        3
+                                    </div>
+                                    <div>
+                                        <h5 class="section-title mb-3">Excellent Connectivity</h5>
+                                        <p>Close to major highways, expressways, and key city infrastructure.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="project-card">
+                                    <div class="text-stroke section-title">
+                                        4
+                                    </div>
+                                    <div>
+                                        <h5 class="section-title mb-3">High Investment Potential</h5>
+                                        <p>Located in a rapidly developing corridor with strong appreciation potential.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+          <section class="section expertise-section bt location-advantage" id="location">
+            <div class="container-fluid maximum-width mx-auto">
+               <div class="d-flex justify-content-between align-items-end flex-nowrap">
+                  <div>
+                     <span class="section-subtitle">
+                     LOCATION ADVANTAGE
+                     </span>
+                     <h2 class="section-title section-heading">
+                        Connected to Everything That Matters
+                     </h2>
+                  </div>
+                  <p class="d-none d-lg-block section-description">
+                     Seamless connectivity that drives growth, accessibility, and long-term value.
+                  </p>
+               </div>
+               <div class="row margin-top g-4">
+                    {{project.loc_adv|safe}}
+               </div>
+            </div>
+         </section>
+  <section class="section infra-section bt">
+            <div class="container-fluid maximum-width mx-auto">
+
+                <div class="d-flex justify-content-between align-items-end">
+                    <div>
+                        <span class="section-subtitle">SOCIAL INFRASTRUCTURE</span>
+                        <h2 class="section-title section-heading">
+                            Everything You Need, Within Reach
+                        </h2>
+
+                    </div>
+                    <!-- <p class="section-description">
+                        A well-developed ecosystem of healthcare, retail, and education surrounds the project
+                    </p> -->
+                </div>
+                <div class="row g-4 margin-top">
+                    {{project.keyfeatures|safe}}
+                </div>
+            </div>
+        </section>
+        <section class="section bt floor-plan-section">
+            <div class="maximum-width mx-auto">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6">
+                        <span class="section-subtitle">
+                            MASTER PLAN
+                        </span>
+
+                        <h2 class="section-title section-heading mb-2">
+                            A Master Plan Designed for Business Growth
+                        </h2>
+                        <p class="mb-2">
+                            Explore the well-planned layout of SkyByte Sector 80, designed to provide efficient space
+                            utilization, organized infrastructure, and smooth accessibility throughout the development.
+                            The master plan reflects a modern approach to commercial planning with wide roads,
+                            designated zones, and landscaped areas.
+                        </p>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="floor-plan">
+                            <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Master Plan Layout">
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </section>
+        <section class="section expertise-section bt" id="what">
+
+            <div class="container-fluid maximum-width mx-auto">
+
+                <!-- Header -->
+                <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                    <div>
+                        <span class="section-subtitle">
+                            Our Amenities
+                        </span>
+
+                        <h2 class="section-title section-heading">
+                            Infrastructure & Amenities
+                        </h2>
+                    </div>
+
+                    <p class="d-none d-md-block section-description">
+                        SkyByte Sector 80 is equipped with essential infrastructure and modern amenities designed to
+                        support business growth and provide a comfortable commercial environment.
+                    </p>
+
+                </div>
+
+                <!-- Grid -->
+                <div class="row margin-top g-3">
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/security.png' %}" alt="24/7 Security">
+                            </div>
+                            <h3 class="card-title mb-3">24/7 Security</h3>
+                            <p>Advanced security systems and gated access ensure a safe and secure commercial
+                                environment.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/wide-road.png' %}" alt="Wide Internal Roads">
+                            </div>
+                            <h3 class="card-title mb-3">Wide Internal Roads</h3>
+                            <p>Well-designed internal roads provide smooth traffic flow and easy accessibility across
+                                the development.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/ample.png' %}" alt="Ample Parking Space">
+                            </div>
+                            <h3 class="card-title mb-3">Ample Parking Space</h3>
+                            <p>Dedicated parking zones designed to accommodate visitors and commercial activity
+                                efficiently.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/green.png' %}" alt="Green Landscaping">
+                            </div>
+                            <h3 class="card-title mb-3">Green Landscaping</h3>
+                            <p>Beautifully designed green spaces enhance the environment and create a pleasant
+                                atmosphere.</p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/led.png' %}" alt="LED Street Lighting">
+                            </div>
+                            <h3 class="card-title mb-3">LED Street Lighting</h3>
+                            <p>Energy-efficient LED lighting ensures safety and visibility across the entire project.
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/underground.png' %}" alt="Underground Utilities">
+                            </div>
+                            <h3 class="card-title mb-3">Underground Utilities</h3>
+                            <p>Modern underground infrastructure for electricity, water supply, and communication
+                                services.</p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/water.png' %}" alt="Reliable Water Supply">
+                            </div>
+                            <h3 class="card-title mb-3">Reliable Water Supply</h3>
+                            <p>A well-planned water supply system ensures uninterrupted availability for businesses.</p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/gated.png' %}" alt="Gated Development">
+                            </div>
+                            <h3 class="card-title mb-3">Gated Development</h3>
+                            <p>Secure gated development providing controlled access and organized commercial planning.
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+ <section class="section bt">
+            <div class="container-fluid maximum-width mx-auto">
+                <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                    <div>
+                        <span class="section-subtitle">
+                            Projects Statistics
+                        </span>
+
+                        <h2 class="section-title section-heading">
+                            Let the Numbers Make the Decision Easy
+                        </h2>
+                    </div>
+
+
+                </div>
+                <div class="row margin-top">
+                    {% with d=project.project_details %}
+                    <div class="col-lg-6">
+                        <table class="specs-table">
+                            <tr>
+                                <td>Project Name</td>
+                                <td>{{ d.project_name|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Location</td>
+                                <td>{{ d.project_location|default:"Coming Soon" }}</td>
+                            </tr>
+                            {% if d.minarea or d.maxarea %}
+                            <tr>
+                                <td>Plot Sizes</td>
+                                <td>
+                                    {% if d.minarea and d.maxarea %}
+                                        {{ d.minarea }} – {{ d.maxarea }}{% if d.areaselect %} {{ d.get_areaselect_display }}{% endif %}
+                                    {% elif d.minarea %}
+                                        {{ d.minarea }}{% if d.areaselect %} {{ d.get_areaselect_display }}{% endif %}
+                                    {% else %}
+                                        {{ d.maxarea }}{% if d.areaselect %} {{ d.get_areaselect_display }}{% endif %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if d.tot_area %}
+                            <tr>
+                                <td>Total Project Area</td>
+                                <td>{{ d.tot_area }} {% if d.project_area_type %}{{ d.get_project_area_type_display }}{% endif %}</td>
+                            </tr>
+                            {% endif %}
+                            <tr>
+                                <td>Main Road Width</td>
+                                <td>{{ d.main_road_width|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Internal Road Width</td>
+                                <td>{{ d.internal_road_width|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Scheme</td>
+                                <td>{{ d.scheme|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Approved By</td>
+                                <td>{{ d.approved_by|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>GST on Plot</td>
+                                <td>{{ d.gst_on_plot|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Construction Permission</td>
+                                <td>{{ d.construction_permission|default:"Coming Soon" }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-lg-6">
+                        <table class="specs-table">
+                            <tr>
+                                <td>Registry Type</td>
+                                <td>{{ d.registry_type|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Bank Loan Availability</td>
+                                <td>{{ d.bank_loan_availability|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Eligibility</td>
+                                <td>{{ d.eligibility|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Distance to Railway</td>
+                                <td>{{ d.distance_to_railway|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Distance to Delhi</td>
+                                <td>{{ d.distance_to_delhi|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Distance to Airport</td>
+                                <td>{{ d.distance_to_airport|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nearby University</td>
+                                <td>{{ d.nearby_university|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Metro Expansion</td>
+                                <td>{{ d.metro_expansion|default:"Coming Soon" }}</td>
+                            </tr>
+                            <tr>
+                                <td>RRTS</td>
+                                <td>{{ d.rrts|default:"Coming Soon" }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    {% endwith %}
+                </div>
+            </div>
+        </section>
+  <!-- <section class="section bt">
+            <div class="container-fluid maximum-width mx-auto">
+
+                <div>
+                    <span class="section-subtitle">PAYMENT PLAN</span>
+                    <h2 class="section-title section-heading">
+                        Flexible Construction-Linked Payment Plan
+                    </h2>
+                    <p class="section-description">
+                        Pay in stages aligned with development progress — ensuring transparency and ease
+                    </p>
+                </div>
+
+                <div class="row">
+                    <div class="payment-table margin-top">
+                        {{project.paymentplan|safe}}                
+                    </div>
+                </div>
+
+                <div class="payment-note">
+                    Total Sale Price = BSP × Area + EDC/IDC + IFMS + Possession Charges
+                </div>
+
+            </div>
+        </section> -->
+        <section class="section bt">
+
+            <div class="container-fluid maximum-width mx-auto">
+
+                <!-- Top Header Row -->
+                <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                    <div>
+                        <span class="section-subtitle">
+                            Project Gallery
+                        </span>
+
+                        <h2 class="section-title section-heading">
+                            Project Visual Highlights
+                        </h2>
+                    </div>
+
+                    <p class="d-none d-md-block section-description">
+                        Explore the vision and design of SkyByte Sector 80 through carefully crafted architectural
+                        visuals and development layouts.
+                    </p>
+
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="service-card grid-row">
+
+                        <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                            <div class="service-img-wrapper">
+                                <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                            <div class="service-img-wrapper">
+                                <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                            <div class="service-img-wrapper">
+                                <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                            <div class="service-img-wrapper">
+                                <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                            <div class="service-img-wrapper">
+                                <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Slider main container -->
+                <div class="swiper gallery-swiper margin-top">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div class="service-card">
+                                <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                                    <div class="service-img-wrapper">
+                                        <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="service-card">
+                                <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                                    <div class="service-img-wrapper">
+                                        <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="service-card">
+                                <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                                    <div class="service-img-wrapper">
+                                        <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="service-card">
+                                <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                                    <div class="service-img-wrapper">
+                                        <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="service-card">
+                                <a href="{% static 'images/coming-soon.jpg' %}" data-fancybox="gallery">
+                                    <div class="service-img-wrapper">
+                                        <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Sector 80 - Project Gallery Image">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+<section class="cta-section position-relative"
+            style="background-image: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.09) 100%),url('{% static 'images/banner/experience.webp' %}');background-size: cover;background-position: center;background-repeat: no-repeat;">
+
+            <!-- Overlay -->
+            <div class="cta-overlay d-flex align-items-center justify-content-center text-center">
+
+                <div class="cta-content text-white">
+
+                    <!-- <span class="cta-subtitle card-title text-center">
+                        CTA
+                    </span> -->
+
+                    <h2 class="cta-heading card-title">
+                        Experience the Future of Urban Living
+                    </h2>
+
+                    <p class="cta-description">
+                        Discover thoughtfully designed homes surrounded by green landscapes, seamless connectivity, and premium amenities. Our developments combine architectural excellence with sustainable planning to create spaces where families thrive.
+                    </p>
+
+                    <div class="mt-4">
+                        <a href="/project/" class="cta-btn">
+                            View All Projects
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+{% endblock %}

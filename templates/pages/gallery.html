@@ -1,0 +1,213 @@
+{% extends 'include/includes.html' %}
+{% load static %}
+{% block title %}Testimonials - SkyByte Developers{% endblock %}
+{% block meta_description %}Read success stories and testimonials from satisfied clients of SkyByte Developers. Watch video testimonials from happy customers and investors.{% endblock %}
+{% block meta_keywords %}SkyByte testimonials, client reviews, customer success stories, real estate testimonials{% endblock %}
+{% block og_title %}Testimonials - SkyByte Developers{% endblock %}
+{% block og_description %}Read success stories from satisfied clients of SkyByte Developers. Watch video testimonials from happy customers.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/about-us-banner.webp' %}{% endblock %}
+{% block og_image_alt %}SkyByte Developers Testimonials{% endblock %}
+{% block twitter_title %}Testimonials - SkyByte Developers{% endblock %}
+{% block twitter_description %}Read success stories from satisfied clients. Watch video testimonials from happy customers.{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/about-us-banner.webp' %}{% endblock %}
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Testimonials", "item": "{{ request.scheme }}://{{ request.get_host }}/testimonials/" }
+    ]
+}
+</script>
+{% endblock %}
+{% block content %}
+    <main>
+        <section class="about-hero">
+            <div class="about-hero-overlay"></div>
+            <div class="about-hero-content">
+                <h1>Our Gallery</h1>
+            </div>
+        </section>
+        <section class="section bt" id="what">
+            <div class="maximum-width mx-auto">
+                <div class="journey-header">
+                    <span class="section-subtitle">Gallery</span>
+                    <h2 class="section-heading">Explore Our Developments</h2>
+                    <p class="gallery-description">A visual walkthrough of Sky Byte Developers' plotted townships, luxury enclaves and site progress across Sonipat.</p>
+                </div>
+
+                <div class="main-gallery-grid margin-top">
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/1.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/1.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/2.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/2.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/3.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/3.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/4.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/4.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/5.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/5.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/6.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/6.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/7.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/7.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/8.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/8.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/9.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/9.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/10.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/10.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/11.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/11.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/12.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/12.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/13.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/13.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/14.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/14.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/15.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/15.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/16.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/16.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/17.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/17.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-card">
+                        <a href="{% static 'images/gallery-img/18.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/18.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                </div>
+                <div class="main-gallery-grid margin-top">
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/21.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/21.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/22.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/22.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/23.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/23.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/24.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/24.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/25.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/25.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/26.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/26.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/27.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/27.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/28.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/28.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/29.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/29.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/30.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/30.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/31.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/31.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/32.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/32.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/33.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/33.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/19.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/19.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="gallery-aspect">
+                        <a href="{% static 'images/gallery-img/20.webp' %}" class="gallery-link" data-fancybox="gallery">
+                        <img src="{% static 'images/gallery-img/20.webp' %}" alt=""/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

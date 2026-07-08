@@ -1,0 +1,13 @@
+.custom-header{
+    border:1px solid rgba(128, 128, 128, 0.201);
+}
+.nav-link-custom{
+    /* color:#000000ac; */
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+.nav-link-custom:hover{
+    /* color: #b58e58; */
+    color:#ffffff;
+    font-weight: 500;
+}

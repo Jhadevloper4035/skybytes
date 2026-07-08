@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /ckeditor/
+Disallow: /media/
+
+Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml

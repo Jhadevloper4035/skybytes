@@ -1,0 +1,108 @@
+{% extends 'include/includes.html' %}
+{% load static %}
+
+{% block title %}{{ meta_title|default:'Blogs - Latest Insights & Updates' }}{% endblock %}
+{% block meta_description %}{{ meta_description|default:'Read the latest real estate insights, news, and updates from SkyByte Developers. Stay informed about property investment, market trends, and development news.' }}{% endblock %}
+{% block meta_keywords %}{{ meta_keywords|default:'SkyByte Developers blog, real estate insights, property investment, Haryana real estate news' }}{% endblock %}
+
+{% block og_title %}{{ meta_title|default:'Blogs - Latest Insights & Updates | SkyByte Developers' }}{% endblock %}
+{% block og_description %}{{ meta_description|default:'Read the latest real estate insights, news, and updates from SkyByte Developers.' }}{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/blog-banner.webp' %}{% endblock %}
+{% block og_image_alt %}SkyByte Developers Blog{% endblock %}
+{% block twitter_title %}{{ meta_title|default:'Blogs - Latest Insights & Updates | SkyByte Developers' }}{% endblock %}
+{% block twitter_description %}{{ meta_description|default:'Read the latest real estate insights and updates from SkyByte Developers.' }}{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/blog-banner.webp' %}{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Blogs", "item": "{{ request.scheme }}://{{ request.get_host }}/blog/" }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    
+    <div>
+        <div class="w-100 h-100 overflow-hidden">
+            <img src="{% static 'images/banner/blog-banner.webp' %}" alt="SkyByte Developers Blog - Insights &amp; Updates" class="page-layout-img page-layout-full">
+        </div>
+    </div>
+</section>
+<section class="section blog">
+
+            <div class="container-fluid maximum-width mx-auto">
+
+                <!-- Header -->
+                <div class="d-flex justify-content-between align-items-end flex-wrap">
+
+                    <div>
+                        <span class="section-subtitle">
+                            Blogs
+                        </span>
+
+                        <h2 class="section-title section-heading">
+                            Latest Insights & Updates
+                        </h2>
+                    </div>
+
+                    <!-- <div class="d-none d-md-block mt-4">
+                        <a href="#" class="btn-primary">
+                            View All Blogs
+                        </a>
+                    </div> -->
+
+                </div>
+
+                <!-- Grid -->
+                <div class="row margin-top g-4">
+
+                    <!-- Blog Cards -->
+                    {% for blog in blogs %}
+                        <div class="col-md-6 col-lg-4">
+                            <div class="blog-card">
+
+                                <div class="blog-image-wrapper">
+                                    {% if blog.blog_image %}
+                                        <img src="{{ blog.blog_image.url }}" alt="{{ blog.name }}">
+                                    {% else %}
+                                        <img src="{% static 'images/render/S9.webp' %}" alt="{{ blog.name }}">
+                                    {% endif %}
+                                </div>
+
+                                <div class="blog-content">
+                                    <h3 class="blog-title">
+                                        {{ blog.meta_title|default:blog.name }}
+                                    </h3>
+
+                                    <div class="blog-meta">
+                                        <span>By {{ blog.author_name|default:'SkyByte' }}</span>
+                                        <span class="mx-2">|</span>
+                                        <span>{{ blog.created_at|date:"F j, Y" }}</span>
+                                    </div>
+                                    <div class="blog-readmore">
+                                        <a href="{% url 'blog:blog_detail' slug=blog.slug %}" class="contact-link">
+                                            Read More
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="col-12">
+                            <p>No blog posts found.</p>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </section>
+{% endblock %}

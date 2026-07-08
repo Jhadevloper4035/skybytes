@@ -1,0 +1,707 @@
+{% extends 'include/includes.html' %}
+{% load static %}
+
+{% block og_title %}Skybyte Developers - Skybyte Developers in Sonipat{% endblock %}
+{% block og_description %}Skybyte Developers is a forward-thinking real estate developer delivering quality residential
+and commercial projects in Haryana. Explore premium plots, apartments, and commercial spaces.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/final-home-banner.webp' %}{% endblock %}
+{% block og_image_alt %}Skybyte Developers - Skybyte Developers in Sonipat{% endblock %}
+{% block twitter_title %}Skybyte Developers - Skybyte Developers in Sonipat{% endblock %}
+{% block twitter_description %}Skybyte Developers delivers quality residential and commercial projects in Haryana.
+Explore premium plots, apartments, and commercial spaces.{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/final-home-banner.webp'
+%}{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "SkyByte Developers",
+    "url": "https://skybytedevelopers.com/"
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "SkyByte Developers",
+    "image": "https://skybytedevelopers.com/static/logo/logo.png",
+    "@id": "https://skybytedevelopers.com/",
+    "url": "https://skybytedevelopers.com/",
+    "telephone": "+91-8307788221",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "502 5th Floor, Light House Vatika Town Square Vatika India Next Sector - 82, Gurgaon",
+        "addressLocality": "Gurugram",
+        "postalCode": "122004",
+        "addressCountry": "IN"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.4195212,
+        "longitude": 77.0358801
+    },
+    "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+    },
+    "sameAs": [
+        "https://www.facebook.com/people/Skybyte-Developers/61580705608968/?ref=1",
+        "https://www.instagram.com/skybytedevelopers/",
+        "https://www.linkedin.com/company/skybyte-developers/"
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org/",
+    "@type": "Review",
+    "itemReviewed": {
+        "@type": "Organization",
+        "image": "https://skybytedevelopers.com/static/logo/logo.png",
+        "name": "SkyByte Developers"
+    },
+    "reviewRating": { "@type": "Rating", "ratingValue": "5.0" },
+    "name": "SkyByte Developers",
+    "author": { "@type": "Person", "name": "Customer" },
+    "reviewBody": "Excellent real estate developer with quality projects and transparent practices.",
+    "publisher": { "@type": "Organization", "name": "SkyByte Developers" }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+    <section class="hero-section page-layout">
+
+        <!-- Background Image -->
+        <div class="w-100 h-100 overflow-hidden">
+            <img src="{% static 'images/banner/final-home-banner.webp' %}"
+                alt="SkyByte Developers - Skybyte Developers in Sonipat" class="w-100 h-100 object-cover-img zoom-img">
+        </div>
+
+        <!-- Overlay -->
+        <div class="hero-overlay d-flex justify-content-center text-center">
+
+            <div class="hero-content px-2">
+
+                <!-- Keep hero-title ONLY for font -->
+                <!-- <h1 class="hero-title hero-heading mb-3">
+                            Building Smart Urban Communities
+                        </h1> -->
+
+                <!-- <p class="hero-subtitle">
+                            Premium Infrastructure. Strategic Locations. Future-Ready Developments.
+                        </p> -->
+
+                <!-- <div class="">
+                            <a href="contact-us.html" class="hero-btn">
+                                Book site visit
+                            </a>
+                        </div> -->
+
+            </div>
+
+        </div>
+
+    </section>
+    <section class="section  position-relative" style="background-color: #fff;">
+        <div class="container-fluid maximum-width mx-auto">
+            <div class="row align-items-top">
+                <!-- Content Column -->
+                <div class="col-lg-6 mt-3 mt-lg-0">
+                    <span class="section-subtitle">
+                        About Us
+                    </span>
+                    <h1 class="section-title section-heading mb-4">
+                        We are Skybyte Developers
+                    </h1>
+                </div>
+                <!-- Image Column -->
+                <!-- Image Column -->
+                <div class="col-lg-6">
+                    <p class="content-text mb-2">
+                        Skybyte Developers is a name to reckon with in the real estate world that believes in having strong
+                        foundations of dreams and happiness, not just brick and stone buildings. We are a visionary real
+                        estate developer who acts as a strong bridge between safe investment opportunities and modern
+                        lifestyle. Our main objective is to provide customers with a property that not only meets their
+                        current needs, but also ensures a great return (ROI) in the future.
+                    </p>
+
+                    <p class="content-text mb-2">
+                        Our Journey & Vision <a href="https://skybytedevelopers.com/">Skybyte Developers</a> started with a
+                        clear vision: to bring transparency, quality and innovation to the real estate sector. In today's
+                        time when there is a plethora of options in the property market, the first thing an investor or a
+                        person buying a house looks for is' trust '. We have considered this trust as our biggest capital at
+                        every stage of our work. Our vision is to provide world-class infrastructure and residential
+                        facilities to India's fast-growing cities, especially in and around Sonipat.
+                    </p>
+                    <p class="content-text mb-2"><b>The success of SkyByte Developers rests on four main pillars:</b></p>
+                    <div class="to-show d-none">
+
+                        <p class="content-text mb-2 text-justify">1.<b> The strategic locations:</b>
+                            We select only those places for our projects where the pace of development is fast. We select
+                            land keeping in mind connectivity, future government schemes and industrial growth. Our
+                            expertise in an emerging hub like Sonepat gives customers the opportunity to be at the centre of
+                            growth.
+                        </p>
+                        <p class="content-text text-justify">2. <b>Transparency and openness:</b>
+                            Documentary action is most important in real estate. We maintain legal clarity and complete
+                            transparency in all our dealings. It is our priority to give every small and big information
+                            about the project to the customers so that their investment is completely safe and stress-free.
+                        </p>
+                        <p class="content-text mb-2 text-justify"><b>3. High quality (design and quality):</b>
+                            We never compromise on the quality of construction. Using modern architecture and latest
+                            construction techniques we design projects that are sustainable as well as aesthetically
+                            outstanding.</p>
+                        <p class="content-text mb-2 text-justify"><b>4. Customer-centric approach:</b>
+                            The customer is not just a buyer, but part of our growing family. We provide them with the most
+                            accurate investment advice and property options while understanding their financial situation
+                            and future needs.
+                        </p>
+                        <p class="content-text mb-2 text-justify">SkyByte Developers is not only a developer, but also an
+                            advisor and partner to you. We do an in-depth analysis of market trends. Our expert team ensures
+                            that wherever you are investing, the benefits of infrastructure development such as highways,
+                            metro connectivity and commercial hubs will be there in the times to come.
+                        </p>
+                        <p class="content-text mb-2">We understand that for a common man, buying a house or investing in
+                            land is like putting in the biggest deposit of his life. That's why we make the process so
+                            simple and transparent that the customer experiences security at every step.</p>
+                    </div>
+                </div>
+                <div class="read-more">
+                    <div class="mt-4">
+                        <span href="javascript:void(0)" id="read-more">
+                            Read More
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="img-container maximum-width mx-auto">
+            <div class="img-service-wrapper">
+                <img src="{% static 'images/banner/about.webp' %}" alt="About SkyByte Developers">
+            </div>
+        </div>
+    </section>
+    <section class="section bt service-section">
+
+        <div class="container-fluid maximum-width mx-auto">
+
+            <!-- Top Header Row -->
+            <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                <div>
+                    <span class="section-subtitle">
+                        Our Services
+                    </span>
+
+                    <h2 class="section-title section-heading">
+                        Crafting spaces that inspire
+                    </h2>
+                </div>
+
+                <p class="d-none d-md-block section-description">
+                    From premium residences to commercial landmarks, our developments are designed to meet evolving
+                    urban needs while ensuring superior quality and modern aesthetics.
+                </p>
+
+            </div>
+
+
+            <!-- Slider main container -->
+            <div class="swiper service-swiper margin-top">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="service-card">
+                            <div class="service-img-wrapper">
+                                <img src="{% static 'images/banner/builder.jpg' %}"
+                                    alt="Builder Floors by SkyByte Developers">
+                            </div>
+                            <div class="service-overlay">
+                                <div class="overlay-content">
+                                    <h3 class="card-service-title">Builder Floors</h3>
+                                    <hr>
+                                    <p>Elegant low-rise residences offering privacy, comfort, and contemporary
+                                        design in prime locations.</p>
+                                    <div class="mt-3">
+                                        <a href="#" class="contact-link service-btn">
+                                            Learn more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-card">
+                            <div class="service-img-wrapper">
+                                <img src="{% static 'images/banner/residential-apartment.webp' %}"
+                                    alt="Residential Apartments by SkyByte Developers">
+                            </div>
+                            <div class="service-overlay">
+                                <div class="overlay-content">
+                                    <h3 class="card-service-title">Residential Apartments</h3>
+                                    <hr>
+                                    <p>Modern high-rise living with world-class amenities, secure environments, and
+                                        vibrant community spaces.</p>
+                                    <div class="mt-3">
+                                        <a href="/project/skybyte-sector-80-sonipat/" class="contact-link service-btn">
+                                            Learn more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-card">
+                            <div class="service-img-wrapper">
+                                <img src="{% static 'images/banner/employment-hub.webp' %}"
+                                    alt="Commercial Properties by SkyByte Developers">
+                            </div>
+                            <div class="service-overlay">
+                                <div class="overlay-content">
+                                    <h3 class="card-service-title">Commercial Properties</h3>
+                                    <hr>
+                                    <p>Strategically located retail and office spaces designed for business growth
+                                        and high rental returns.</p>
+                                    <div class="mt-3">
+                                        <a href="#" class="contact-link service-btn">
+                                            Learn more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-card">
+                            <div class="service-img-wrapper">
+                                <img src="{% static 'images/banner/plots.webp' %}"
+                                    alt="Premium Plots by SkyByte Developers">
+                            </div>
+                            <div class="service-overlay">
+                                <div class="overlay-content">
+                                    <h3 class="card-service-title">Plots</h3>
+                                    <hr>
+                                    <p>Premium residential plots in thoughtfully designed communities, combining
+                                        infrastructure readiness with long-term investment value.</p>
+                                    <div class="mt-3">
+                                        <a href="/project/skybyte-sector-80-sonipat/" class="contact-link service-btn">
+                                            Learn more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="cta-section position-relative"
+        style="background-image: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.09) 100%),url('{% static "
+        images/banner/urban1.webp" %}');background-size: cover;background-position: center;background-repeat: no-repeat;">
+
+        <!-- Overlay -->
+        <div class="cta-overlay d-flex justify-content-center text-center">
+
+            <div class="cta-content text-white">
+
+                <!-- <span class="cta-subtitle card-title text-center">
+                            CTA
+                        </span> -->
+
+                <h2 class="cta-heading card-title">
+                    Experience the Future of Urban Living
+                </h2>
+
+                <p class="cta-description desktop">
+                    Discover thoughtfully designed homes surrounded by green landscapes, seamless connectivity, and
+                    premium amenities. Our developments combine architectural excellence with sustainable planning
+                    to create spaces where families thrive.
+                </p>
+
+                <div class="mt-4">
+                    <a href="/project/" class="cta-btn">
+                        Explore Our Projects
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <section class="section">
+
+        <div class="container-fluid maximum-width mx-auto">
+
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-end flex-nowrap">
+                <div>
+                    <span class="section-subtitle">
+                        Investment
+                    </span>
+                    <h2 class="section-title section-heading">
+                        Invest where growth is Inevitable
+                    </h2>
+                </div>
+
+                <p class="d-none d-md-block section-description">
+                    Our projects are strategically located in high-potential zones with strong infrastructure growth
+                    and connectivity advantages — ensuring appreciation and stable returns for investors.
+                </p>
+            </div>
+
+            <!-- Accordion -->
+            <div id="accordion-container" class="investment-accordion margin-top">
+
+                <!-- CARD 1 -->
+                <div class="accordion-card active">
+
+                    <div class="accordion-bg-base"></div>
+
+                    <div class="accordion-bg-image" style="background-image: url('{% static " images/banner/highway1.webp"
+                        %}');">
+                    </div>
+
+                    <div class="accordion-gradient"></div>
+
+                    <span class="accordion-number">01</span>
+
+                    <h3 class="accordion-vertical-title">
+                        Strategic Highway Connectivity
+                    </h3>
+
+                    <div class="accordion-content">
+                        <div
+                            class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center">
+                            <div>
+                                <h3 class="accordion-title">Strategic Highway Connectivity</h3>
+                                <p class="accordion-text">
+                                    Sonipat is strategically located near major expressways like KMP, KGP, and 334B,
+                                    making it an ideal spot for commuters.
+
+                                </p>
+                            </div>
+                            <div class="accordion-icon">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="accordion-card">
+
+                    <div class="accordion-bg-base"></div>
+
+                    <div class="accordion-bg-image" style="background-image: url('{% static "
+                        images/banner/employment-hub.webp" %}');">
+                    </div>
+
+                    <div class="accordion-gradient"></div>
+
+                    <span class="accordion-number">02</span>
+
+                    <h3 class="accordion-vertical-title">
+                        Proximity to Employment Hubs
+                    </h3>
+
+                    <div class="accordion-content">
+                        <div
+                            class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center">
+                            <div>
+                                <h3 class="accordion-title">Proximity to Employment Hubs</h3>
+                                <p class="accordion-text">
+                                    Located near major employment corridors including Kundli, Rai,and emerging
+                                    industrial zones, supporting strong residential demand from professionals
+                                    working across the NCR region.
+                                </p>
+                            </div>
+                            <div class="accordion-icon">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CARD 3 -->
+
+
+                <div class="accordion-card">
+
+                    <div class="accordion-bg-base"></div>
+
+                    <div class="accordion-bg-image" style="background-image: url('{% static " images/banner/metro.webp"
+                        %}');">
+                    </div>
+
+                    <div class="accordion-gradient"></div>
+
+                    <span class="accordion-number">03</span>
+
+                    <h3 class="accordion-vertical-title">
+                        Infrastructure Developments
+                    </h3>
+
+                    <div class="accordion-content">
+                        <div
+                            class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center">
+                            <div>
+                                <h3 class="accordion-title">Upcoming Infrastructure Developments</h3>
+                                <p class="accordion-text">
+                                    Upcoming infrastructure projects including the proposed Delhi–Sonipat Metro
+                                    corridor and developments under the Sonipat Master Plan 2031 are set to
+                                    significantly enhance regional connectivity and property value.
+                                </p>
+                            </div>
+                            <div class="accordion-icon">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- CARD 4 -->
+                <div class="accordion-card">
+
+                    <div class="accordion-bg-base"></div>
+
+                    <div class="accordion-bg-image" style="background-image: url('{% static "
+                        images/banner/commercial-1.webp" %}');">
+                    </div>
+
+                    <div class="accordion-gradient"></div>
+
+                    <span class="accordion-number">04</span>
+
+                    <h3 class="accordion-vertical-title">
+                        Emerging Growth Corridors
+                    </h3>
+
+                    <div class="accordion-content">
+                        <div
+                            class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center">
+                            <div>
+                                <h3 class="accordion-title">Emerging Growth Corridors</h3>
+                                <p class="accordion-text">
+                                    Sonipat is rapidly evolving as a high-growth micro-market with planned
+                                    residential sectors, educational institutions, and integrated townships driving
+                                    long-term capital appreciation.
+                                </p>
+                            </div>
+                            <div class="accordion-icon">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <section class="section bt">
+
+        <div class="maximum-width mx-auto">
+
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                <div>
+                    <span class="section-subtitle">
+                        Featured Projects
+                    </span>
+
+                    <h2 class="section-title section-heading">
+                        Discover your ideal property
+                    </h2>
+                </div>
+
+                <p class="d-none d-lg-block section-description">
+                    Explore a diverse portfolio of residential and commercial projects, each crafted to deliver
+                    comfort, convenience, and exceptional investment value.
+                </p>
+
+            </div>
+
+            <!-- Grid -->
+            <div class="row margin-top gy-4 gx-md-4 gx-lg-5">
+
+                <!-- Card 1 -->
+                <div class="col-md-6">
+                    <div class="featured-card">
+
+                        <div class="featured-image-wrapper">
+                            <img src="{% static 'images/coming-soon.jpg' %}"
+                                alt="SkyByte Commercial Project - Sonipat, Haryana">
+
+                            <div class="vertical-btn">
+                                <a href="/project/">View Details</a>
+                            </div>
+                        </div>
+
+                        <div class="featured-info">
+                            <div class="d-flex justify-content-between align-items-end flex-wrap">
+                                <div>
+                                    <h3 class="project-title">SkyByte Commerical Project</h3>
+                                    <p class="project-type">
+                                        <span>Type</span>: Commercial Office Space
+                                    </p>
+                                </div>
+                                <p class="project-location">
+                                    Sonipat, Haryana
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6">
+                    <div class="featured-card">
+
+                        <div class="featured-image-wrapper">
+                            <img src="{% static 'images/coming-soon.jpg' %}"
+                                alt="SkyByte Residential Project - Sonipat, Haryana">
+
+                            <div class="vertical-btn">
+                                <a href="/project/">View Details</a>
+                            </div>
+                        </div>
+
+                        <div class="featured-info">
+                            <div class="d-flex justify-content-between align-items-end flex-wrap">
+                                <div>
+                                    <h3 class="project-title">SkyByte Residential Project</h3>
+                                    <p class="project-type">
+                                        <span>Type</span>: Premium Residential Apartments
+                                    </p>
+                                </div>
+                                <p class="project-location">
+                                    Sonipat, Haryana
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <section class="section">
+        <div class="maximum-width mx-auto">
+            <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                <div>
+                    <span class="section-subtitle">
+                        Instagram Reels
+                    </span>
+
+                    <h2 class="section-title section-heading">
+                        See Life at SkyByte
+                    </h2>
+                </div>
+
+
+            </div>
+            <div class="row margin-top g-4 gy-3">
+                
+                <div class="col-lg-3 col-6">
+
+                    <div class="aspect-4-5 reels-card">
+                        <a
+                            href="https://www.instagram.com/reel/DYR32X0R7K9/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+                            <video src="{% static 'reels/reels_4.mp4' %}" playsinline muted loop autoplay controls></video>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6 ">
+                    <div class="aspect-4-5 reels-card">
+                        <a
+                            href="https://www.instagram.com/reel/DZg7ydSRVah/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="><video
+                                src="{% static 'reels/reels_3.mp4' %}" playsinline muted loop autoplaycontrols></video>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="aspect-4-5 reels-card">
+                        <a
+                            href="https://www.instagram.com/reel/DZwUNrzRmbh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+                            <video src="{% static 'reels/reels_2.mp4' %}" playsinline muted loop autoplay controls></video>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="aspect-4-5 reels-card">
+                        <a
+                            href="https://www.instagram.com/reel/DW_Z4ePEdel/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+                            <video src="{% static 'reels/reels_1.mp4' %}" playsinline muted loop autoplay controls></video>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="cta-section position-relative"
+        style="background-image: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.02) 100%),url('{% static "
+        images/banner/ready-to-invest.webp" %}');background-size: cover;background-position: center;background-repeat:
+        no-repeat;">
+
+
+        <div class="cta-overlay d-flex align-items-center justify-content-center">
+
+            <div class="cta-content text-center text-white">
+
+                <!-- <span class="cta-subtitle card-title">
+                            CTA
+                        </span> -->
+
+                <h2 class="cta-heading card-title">
+                    Ready to Invest
+                    in the Future?
+                </h2>
+
+                <p class="cta-description">
+                    Whether you’re looking for your dream home or a high-return investment opportunity, our team is
+                    here to guide you at every step. Let’s build your future together.
+                </p>
+
+                <div class="mt-4">
+                    <a href="/contact-us/" class="cta-btn">
+                        Get in Touch
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

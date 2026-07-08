@@ -1,0 +1,11 @@
+.git
+.agents
+.codex
+__pycache__/
+*.py[cod]
+.env
+.env.*
+logs/*.log
+staticfiles/
+media/
+mysql_data/

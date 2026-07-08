@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skybyte Deployment Guide</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1b1f24;
+      --muted: #5b6470;
+      --line: #d8dee8;
+      --panel: #f6f8fb;
+      --accent: #0f766e;
+      --accent-soft: #e6fffb;
+      --danger: #b42318;
+      --code: #101828;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #ffffff;
+      line-height: 1.58;
+    }
+
+    header {
+      padding: 48px 24px 28px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 24px 64px;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin: 0 auto 12px;
+      font-size: 34px;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      max-width: 980px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    h2 {
+      margin-top: 36px;
+      padding-top: 8px;
+      font-size: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    h3 {
+      margin-top: 24px;
+      font-size: 18px;
+    }
+
+    code {
+      color: var(--code);
+      background: #eef2f7;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 16px;
+      border-radius: 8px;
+      background: #0b1020;
+      color: #eef4ff;
+      line-height: 1.45;
+    }
+
+    pre code {
+      color: inherit;
+      background: transparent;
+      padding: 0;
+    }
+
+    .notice {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      background: var(--accent-soft);
+    }
+
+    .warning {
+      border-left-color: var(--danger);
+      background: #fff5f5;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px;
+      border: 1px solid var(--line);
+    }
+
+    th {
+      background: var(--panel);
+    }
+
+    ul,
+    ol {
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .checklist li {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Skybyte Django App Deployment Guide</h1>
+    <p class="subtitle">First-time Ubuntu droplet setup, GitHub Actions CI/CD, production environment setup, and
+      day-to-day deployment commands.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>1. Deployment Overview</h2>
+      <p>This project deploys to a DigitalOcean Ubuntu droplet using Docker Compose. GitHub Actions runs <code>make
+          ci</code>, builds the Docker image, pushes it to Docker Hub, SSHes into the droplet, pulls the image, and runs
+        the app with <code>make prod-pull</code>.</p>
+
+      <div class="notice">
+        <strong>Your droplet SSH command:</strong>
+        <pre><code>ssh -i ~/.ssh/id_ed25519 root@64.227.147.48</code></pre>
+      </div>
+
+      <p>Production traffic goes to nginx, which proxies requests to Gunicorn/Django. The database runs in MySQL inside
+        Docker Compose.</p>
+    </section>
+
+    <section>
+      <h2>2. Local Project Commands</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>make dev-up</code></td>
+            <td>Start local development stack in detached mode.</td>
+          </tr>
+          <tr>
+            <td><code>make dev-logs</code></td>
+            <td>Follow local development logs.</td>
+          </tr>
+          <tr>
+            <td><code>make prod-build</code></td>
+            <td>Build and run the production stack manually from source.</td>
+          </tr>
+          <tr>
+            <td><code>make prod-pull</code></td>
+            <td>Pull the Docker Hub image and run the production stack on the droplet.</td>
+          </tr>
+          <tr>
+            <td><code>make check</code></td>
+            <td>Run Django system checks inside Docker.</td>
+          </tr>
+          <tr>
+            <td><code>make check-deploy</code></td>
+            <td>Run Django deployment checks.</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section>
+      <h2>3. First-Time Ubuntu Droplet Setup</h2>
+
+      <h3>3.1 Connect to the droplet</h3>
+      <pre><code>ssh -i ~/.ssh/id_ed25519 root@64.227.147.48</code></pre>
+
+      <h3>3.2 Update Ubuntu packages</h3>
+      <pre><code>apt update
+apt upgrade -y</code></pre>
+
+      <h3>3.3 Install base tools</h3>
+      <pre><code>apt install -y ca-certificates curl git ufw make unzip</code></pre>
+
+      <h3>3.4 Install Docker and Docker Compose plugin</h3>
+      <p>This uses Ubuntu packages, which are simple and reliable for a first deployment.</p>
+      <pre><code>apt install -y docker.io docker-compose-plugin
+systemctl enable docker
+systemctl start docker
+docker --version
+docker compose version</code></pre>
+
+      <h3>3.5 Configure firewall</h3>
+      <pre><code>ufw allow OpenSSH
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw --force enable
+ufw status</code></pre>
+
+      <h3>3.6 Create deployment folder</h3>
+      <pre><code>mkdir -p /opt/skybyte_fullStack</code></pre>
+
+      <h3>3.7 Optional: add swap memory</h3>
+      <p>The droplet normally pulls a prebuilt Docker image, so it does less work than a build server. Add swap if the
+        droplet has 1 GB RAM or if MySQL/Docker restarts because of memory pressure.</p>
+      <pre><code>fallocate -l 2G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo '/swapfile none swap sw 0 0' >> /etc/fstab
+free -h</code></pre>
+    </section>
+
+    <section>
+      <h2>4. Docker Hub Setup</h2>
+      <p>Create a Docker Hub repository before adding GitHub Secrets.</p>
+      <ol>
+        <li>Open <code>https://hub.docker.com/</code> and sign in.</li>
+        <li>Create a repository, for example <code>yourusername/skybytes</code>.</li>
+        <li>Create an access token from <strong>Account Settings -> Security -> Access Tokens</strong>.</li>
+        <li>Use that repository name and token in GitHub Secrets.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>5. GitHub Secrets Required</h2>
+      <p>In GitHub, open your repository and go to <strong>Settings -> Secrets and variables -> Actions -> New
+          repository secret</strong>.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Secret Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>DROPLET_HOST</code></td>
+            <td><code>64.227.147.48</code></td>
+          </tr>
+          <tr>
+            <td><code>DROPLET_USER</code></td>
+            <td><code>root</code></td>
+          </tr>
+          <tr>
+            <td><code>DEPLOY_PATH</code></td>
+            <td><code>/opt/skybyte_fullStack</code></td>
+          </tr>
+          <tr>
+            <td><code>DROPLET_SSH_KEY</code></td>
+            <td>The full private key content from your local <code>~/.ssh/id_ed25519</code> file.</td>
+          </tr>
+          <tr>
+            <td><code>PROD_ENV_FILE</code></td>
+            <td>The full production <code>.env</code> file content.</td>
+          </tr>
+          <tr>
+            <td><code>DOCKERHUB_USERNAME</code></td>
+            <td>Your Docker Hub username.</td>
+          </tr>
+          <tr>
+            <td><code>DOCKERHUB_TOKEN</code></td>
+            <td>A Docker Hub access token with permission to push images.</td>
+          </tr>
+          <tr>
+            <td><code>DOCKERHUB_REPOSITORY</code></td>
+            <td>Your Docker Hub image name, for example <code>yourusername/skybytes</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning notice">
+        <strong>Important:</strong> never commit <code>~/.ssh/id_ed25519</code>, <code>.env</code>, passwords, or
+        production documents to Git. Put them only in GitHub Secrets or on the droplet.
+      </div>
+    </section>
+
+    <section>
+      <h2>6. Create the Production Environment Secret</h2>
+      <p>Use this as the shape for your <code>PROD_ENV_FILE</code> GitHub Secret. Replace every placeholder before
+        deployment. Do not add <code>WEB_IMAGE</code>; GitHub Actions appends it automatically after pushing the Docker
+        image.</p>
+
+      <pre><code>DJANGO_ENV=production
+DJANGO_DEBUG=false
+DJANGO_SECRET_KEY=replace-with-a-long-random-secret-key
+DJANGO_ALLOWED_HOSTS=skybytedevelopers.com,www.skybytedevelopers.com,64.227.147.48
+DJANGO_CSRF_TRUSTED_ORIGINS=https://skybytedevelopers.com,https://www.skybytedevelopers.com
+DJANGO_SECURE_SSL_REDIRECT=false
+DJANGO_SECURE_HSTS_SECONDS=0
+DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=false
+DJANGO_SECURE_HSTS_PRELOAD=false
+
+DB_ENGINE=django.db.backends.mysql
+DB_NAME=frinew2025data
+DB_USER=root
+DB_PASSWORD=replace-with-strong-mysql-password
+DB_HOST=db
+DB_PORT=3306
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_TLS=true
+EMAIL_HOST_USER=info@skybytedevelopers.com
+EMAIL_HOST_PASSWORD=replace-with-email-app-password
+
+NGINX_HTTP_PORT=80
+GUNICORN_WORKERS=3
+GUNICORN_TIMEOUT=120</code></pre>
+
+      <p>If you are testing by IP before DNS is ready, keep <code>64.227.147.48</code> in
+        <code>DJANGO_ALLOWED_HOSTS</code>. After DNS works, use the domain names.</p>
+    </section>
+
+    <section>
+      <h2>7. GitHub Actions CI/CD</h2>
+      <p>The workflow builds a Docker image, pushes it to Docker Hub, then deploys by pulling that image on the droplet.
+        It is located at:</p>
+      <pre><code>.github/workflows/deploy.yml</code></pre>
+
+      <p>It runs automatically when code is pushed to <code>main</code> or <code>master</code>. It can also be started
+        manually from the GitHub Actions tab with <strong>Run workflow</strong>.</p>
+
+      <h3>What the workflow does</h3>
+      <ol>
+        <li>Runs <code>make ci</code> for Docker Compose config checks, image build, and Django system checks.</li>
+        <li>Stops if validation fails.</li>
+        <li>Logs in to Docker Hub with <code>DOCKERHUB_USERNAME</code> and <code>DOCKERHUB_TOKEN</code>.</li>
+        <li>Builds and pushes <code>DOCKERHUB_REPOSITORY:commit-sha</code> and
+          <code>DOCKERHUB_REPOSITORY:latest</code>.</li>
+        <li>Uses <code>appleboy/scp-action</code> to upload only <code>docker/</code>, <code>Makefile</code>, and
+          <code>compose.production.yml</code>.</li>
+        <li>Uses <code>appleboy/ssh-action</code> to write <code>.env</code>, log in to Docker Hub, pull the image, and
+          restart containers.</li>
+        <li>Runs <code>make prod-pull</code> and <code>make status</code> on the droplet.</li>
+      </ol>
+
+      <h3>Production compose file</h3>
+      <p>The droplet uses <code>compose.production.yml</code>. It requires <code>WEB_IMAGE</code>, which the workflow
+        writes into <code>.env</code> automatically.</p>
+    </section>
+
+    <section>
+      <h2>8. First Deployment</h2>
+      <ol class="checklist">
+        <li>Commit and push the workflow file, Docker files, compose files, Makefile, and deployment guide.</li>
+        <li>Add all GitHub Secrets listed above.</li>
+        <li>Open GitHub Actions in your repository.</li>
+        <li>Select <strong>Build and Deploy</strong>.</li>
+        <li>Click <strong>Run workflow</strong>, or push to <code>main</code>/<code>master</code>.</li>
+        <li>Wait for the CI, Docker Hub push, and droplet deploy jobs to finish.</li>
+        <li>Open <code>http://64.227.147.48</code>.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>9. Server Commands After Deployment</h2>
+      <p>SSH into the droplet:</p>
+      <pre><code>ssh -i ~/.ssh/id_ed25519 root@64.227.147.48</code></pre>
+
+      <p>Go to the deployment folder:</p>
+      <pre><code>cd /opt/skybyte_fullStack</code></pre>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>make status</code></td>
+            <td>Check running containers.</td>
+          </tr>
+          <tr>
+            <td><code>make prod-logs</code></td>
+            <td>Follow all production logs.</td>
+          </tr>
+          <tr>
+            <td><code>docker compose -f compose.production.yml logs -f web</code></td>
+            <td>Watch Django/Gunicorn logs.</td>
+          </tr>
+          <tr>
+            <td><code>docker compose -f compose.production.yml logs -f nginx</code></td>
+            <td>Watch nginx logs.</td>
+          </tr>
+          <tr>
+            <td><code>docker compose -f compose.production.yml exec web python manage.py migrate</code></td>
+            <td>Run migrations manually.</td>
+          </tr>
+          <tr>
+            <td><code>docker compose -f compose.production.yml exec web python manage.py createsuperuser</code></td>
+            <td>Create a Django admin user.</td>
+          </tr>
+          <tr>
+            <td><code>docker compose -f compose.production.yml restart web</code></td>
+            <td>Restart only Django/Gunicorn.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Manual image redeploy or rollback</h3>
+      <p>GitHub Actions writes <code>WEB_IMAGE</code> into <code>.env</code>. To manually roll back, edit
+        <code>WEB_IMAGE</code> to an older Docker Hub tag, then restart the production stack.</p>
+      <pre><code>cd /opt/skybyte_fullStack
+nano .env
+make prod-pull
+make status</code></pre>
+    </section>
+
+    <section>
+      <h2>10. Domain and HTTPS</h2>
+      <p>Point your DNS records to the droplet:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td><code>@</code></td>
+            <td><code>64.227.147.48</code></td>
+          </tr>
+          <tr>
+            <td>A</td>
+            <td><code>www</code></td>
+            <td><code>64.227.147.48</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>After HTTPS is configured, update <code>PROD_ENV_FILE</code>:</p>
+      <pre><code>DJANGO_SECURE_SSL_REDIRECT=true
+DJANGO_SECURE_HSTS_SECONDS=31536000
+DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=true</code></pre>
+
+      <p>Only set <code>DJANGO_SECURE_HSTS_PRELOAD=true</code> after you understand browser preload requirements and are
+        sure every subdomain supports HTTPS.</p>
+    </section>
+
+    <section>
+      <h2>11. Troubleshooting</h2>
+
+      <h3>Port 80 does not open</h3>
+      <pre><code>ufw status
+make status
+docker compose -f compose.production.yml logs nginx --tail=100</code></pre>
+
+      <h3>Django shows bad request</h3>
+      <p>Add the IP or domain to <code>DJANGO_ALLOWED_HOSTS</code> in the <code>PROD_ENV_FILE</code> secret and
+        redeploy.</p>
+
+      <h3>Database login fails</h3>
+      <p>If MySQL was already initialized with an older password, changing <code>DB_PASSWORD</code> will not reset the
+        existing database volume. Use the original password or intentionally recreate the database volume after backing
+        up data.</p>
+
+      <h3>Docker Hub push fails</h3>
+      <ul>
+        <li>Check <code>DOCKERHUB_USERNAME</code>.</li>
+        <li>Check <code>DOCKERHUB_TOKEN</code>.</li>
+        <li>Check <code>DOCKERHUB_REPOSITORY</code>, for example <code>yourusername/skybytes</code>.</li>
+      </ul>
+
+      <h3>Droplet cannot pull image</h3>
+      <ul>
+        <li>Make sure Docker is installed on the droplet.</li>
+        <li>Make sure the workflow logs in to Docker Hub successfully.</li>
+        <li>If the Docker Hub repository is private, confirm the token has pull access.</li>
+      </ul>
+
+      <h3>CI build fails because of memory</h3>
+      <p>The image builds on GitHub Actions, not on the droplet. If Docker services on the droplet restart because of
+        memory pressure, add swap using the command in section 3.7.</p>
+
+      <h3>GitHub Action cannot SSH</h3>
+      <ul>
+        <li>Make sure <code>DROPLET_HOST</code> is <code>64.227.147.48</code>.</li>
+        <li>Make sure <code>DROPLET_USER</code> is <code>root</code>.</li>
+        <li>Make sure <code>DROPLET_SSH_KEY</code> contains the full private key, including the first and last lines.
+        </li>
+        <li>Confirm you can connect locally with <code>ssh -i ~/.ssh/id_ed25519 root@64.227.147.48</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>12. Final Safety Checklist</h2>
+      <ul class="checklist">
+        <li><code>.env</code> is ignored by Git and not committed.</li>
+        <li>Private SSH keys are stored only in GitHub Secrets and on your local machine.</li>
+        <li><code>DEBUG=false</code> in production.</li>
+        <li><code>DJANGO_SECRET_KEY</code> is long, random, and private.</li>
+        <li><code>DB_PASSWORD</code> is strong and private.</li>
+        <li>Firewall allows only SSH, HTTP, and HTTPS.</li>
+        <li>Backups are configured before real customer data goes live.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+
+</html>

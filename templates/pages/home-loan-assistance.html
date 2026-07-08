@@ -1,0 +1,502 @@
+{% extends 'include/includes.html' %}
+{% load static %}
+{% block title %}SKY BYTE DEVELOPERS | Home Loan Assistance{% endblock %}
+{% block meta_description %}Get home loan assistance from SkyByte Developers. Calculate your EMI, check eligibility, and navigate your property purchase smoothly with our expert guidance.{% endblock %}
+{% block meta_keywords %}home loan assistance, EMI calculator, property loan Haryana, housing finance{% endblock %}
+{% block og_title %}Home Loan Assistance - SkyByte Developers{% endblock %}
+{% block og_description %}Get expert home loan assistance from SkyByte Developers. Calculate your EMI and plan your property purchase.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/home-loan.webp' %}{% endblock %}
+{% block og_image_alt %}Home Loan Assistance - SkyByte Developers{% endblock %}
+{% block twitter_title %}Home Loan Assistance - SkyByte Developers{% endblock %}
+{% block twitter_description %}Get expert home loan assistance. Calculate your EMI and plan your property purchase with SkyByte Developers.{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/home-loan.webp' %}{% endblock %}
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Home Loan Assistance", "item": "{{ request.scheme }}://{{ request.get_host }}/home-loan-assistance/" }
+    ]
+}
+</script>
+{% endblock %}
+{% block content %}
+<section class="section loan-about">
+    <div class="maximum-width mx-auto">
+        <div class="row align-items-center">
+            <style>
+
+            </style>
+
+            <div class="col-lg-5">
+                <div class="loan-content">
+                    <span class="section-subtitle">
+                        Home Loan
+                    </span>
+                    <h2 class="section-title section-heading mb-4">
+                        Calculate your Home loan EMI easily
+                    </h2>
+                    <ul>
+                        <li>
+                            <p class="loan-text">Plan your budget confidently</p>
+                        </li>
+                        <li>
+                            <p class="loan-text">Get instant and accurate results</p>
+                        </li>
+                        <li>
+                            <p class="loan-text">Navigate your property purchase smoothly</p>
+                        </li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="#calculator" class="btn-primary">
+                            Use the EMI Calculator
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="loan-image">
+                    <img src="{% static 'images/banner/home-loan.webp' %}" alt="Home Loan Assistance - SkyByte Developers">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section bt contact-section" id="calculator">
+    <div class="container-fluid maximum-width mx-auto">
+
+        <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+            <div>
+                <span class="section-subtitle">
+                    Home Loan
+                </span>
+
+                <h2 class="section-title section-heading">
+                    Loan Amount Calculator
+                </h2>
+            </div>
+
+            <p class="d-none d-md-block section-description">
+            </p>
+
+        </div>
+
+        <div class="contact-form row margin-top pb-5">
+            <div class="col-lg-5">
+                <div class="inputs-section">
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>Loan Amount</label>
+                            <div class="input-wrapper">₹ <input type="text" id="loanAmountInput"
+                                    value="49600000">
+                            </div>
+                        </div>
+                        <input type="range" id="loanAmountSlider" min="100000" max="100000000" step="10000"
+                            value="49600000">
+                        <div class="range-labels"><span>₹ 1 Lac</span><span>₹ 10 Cr</span></div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>Tenure (Years)</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="tenureInput" value="15" class="width-small">
+                            </div>
+                        </div>
+                        <input type="range" id="tenureSlider" min="1" max="30" step="1" value="15">
+                        <div class="range-labels"><span>1 year</span><span>30 years</span></div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>Interest Rate (% P.A.)</label>
+                            <div class="input-wrapper"><input class="width-small" type="text" id="interestInput"
+                                    value="7.75" step="0.01">
+                                %</div>
+                        </div>
+                        <input type="range" id="interestSlider" min="0.5" max="15" step="0.05" value="7.75">
+                        <div class="range-labels"><span>0.5%</span><span>15%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="results-section">
+                    <div class="col-lg-6 stats-container desktop">
+                        <div class="stats">
+                            <div class="stat-item">
+                                <p>Monthly Home Loan EMI</p>
+                                <h2 id="emiDisplay">₹ 86,301</h2>
+                            </div>
+                            <div class="stat-item secondary">
+                                <p>Principal Amount</p>
+                                <h2 id="principalDisplay">₹ 9,93,422</h2>
+                            </div>
+                            <div class="stat-item secondary">
+                                <p>Interest Amount</p>
+                                <h2 id="interestDisplay">₹ 42,195</h2>
+                            </div>
+                            <div class="stat-item secondary total">
+                                <p>Total Amount Payable</p>
+                                <h2 id="totalDisplay">₹ 10,35,617</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 charts">
+                        <h3 class="chart-title">Loan Breakdown</h3>
+                        <div class="chart-container">
+                            <canvas id="loanChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 stats-container mobile">
+                        <div class="stats">
+                            <div class="stat-item">
+                                <p>Monthly Home Loan EMI</p>
+                                <h2 id="emiDisplay">₹ 86,301</h2>
+                            </div>
+                            <div class="stat-item secondary">
+                                <p>Principal Amount</p>
+                                <h2 id="principalDisplay">₹ 9,93,422</h2>
+                            </div>
+                            <div class="stat-item secondary">
+                                <p>Interest Amount</p>
+                                <h2 id="interestDisplay">₹ 42,195</h2>
+                            </div>
+                            <div class="stat-item secondary total">
+                                <p>Total Amount Payable</p>
+                                <h2 id="totalDisplay">₹ 10,35,617</h2>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<section class="section bt" id="FAQs">
+    <div class="container-fluid maximum-width mx-auto">
+        <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+            <div>
+                <span class="section-subtitle">
+                    FAQs
+                </span>
+
+                <h2 class="section-title section-heading">
+                    Frequently Asked Questions
+                </h2>
+            </div>
+
+            <p class="d-none d-md-block section-description">
+            </p>
+
+        </div>
+        <div class="row margin-top">
+            <div class="faq-container">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>1. What is a Home Loan EMI?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        A Home Loan EMI (Equated Monthly Installment) is the fixed monthly amount you pay to
+                        repay your home loan. It consists of both the principal amount and the interest charged
+                        by the lender, spread across the loan tenure.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>2. How is EMI calculated?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        EMI is calculated based on three key factors: loan amount, interest rate, and tenure.
+                        The formula ensures that you pay a fixed monthly amount throughout the loan period, with
+                        interest forming a larger portion in the initial years.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>3. What factors affect my EMI amount?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Your EMI depends on:
+                        <ul>
+                            <li>Loan amount (higher loan = higher EMI)</li>
+                            <li>Interest rate (higher rate = higher EMI)</li>
+                            <li>Loan tenure (longer tenure = lower EMI but higher total interest)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>4. Should I choose a longer or shorter tenure?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        A shorter tenure reduces total interest but increases your EMI. A longer tenure lowers
+                        your EMI but increases the total interest paid. The ideal choice depends on your monthly
+                        income and financial goals.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>5. How can I reduce my home loan EMI?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        You can reduce your EMI by:
+                        <ul>
+                            <li>Increasing your down payment</li>
+                            <li>Choosing a longer tenure</li>
+                            <li>Negotiating a lower interest rate</li>
+                            <li>Making partial prepayments during the loan period</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>6. What is the difference between fixed and floating interest rates?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <ul>
+                            <li><strong>Fixed Rate: </strong>Interest remains constant throughout the tenure
+                            </li>
+                            <li><strong>Floating Rate: </strong>Interest changes based on market conditions.
+                                <br>Floating rates are usually lower initially but may fluctuate over time.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>7. Can I prepay my home loan?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes, most lenders allow partial or full prepayment of home loans. This helps reduce your
+                        principal and overall interest burden. Some banks may charge a small fee depending on
+                        the loan type.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>8. What happens if I miss an EMI payment?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Missing an EMI can result in penalty charges and negatively impact your credit score.
+                        It’s important to maintain timely payments to avoid financial and legal complications.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>9. Does increasing EMI reduce total interest?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes. Paying a higher EMI reduces your loan tenure, which significantly lowers the total
+                        interest paid over time.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>10. Is this EMI calculator accurate?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        This calculator provides a close estimate based on the inputs you provide. However,
+                        actual EMI may vary depending on lender policies, processing fees, and applicable
+                        charges.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>11. How much home loan can I afford??</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        A general rule is that your EMI should not exceed 30–40% of your monthly income. This
+                        ensures you can comfortably manage your loan along with other expenses.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>12. Why should I use this EMI calculator before buying a property?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Using an EMI calculator helps you:
+                        <ul>
+                            <li>Plan your budget realistically</li>
+                            <li>Compare different loan scenarios</li>
+                            <li>Avoid financial stress</li>
+                            <li>Make informed property decisions</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact" class="cta-section position-relative"
+    style="background-image: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.06) 100%),url('{% static 'images/banner/ready-to-invest.webp' %}');background-size: cover;background-position: center;background-repeat: no-repeat;">
+
+    <div class="cta-overlay d-flex justify-content-center">
+
+        <div class="cta-content text-center text-white">
+
+            <!-- <span class="cta-subtitle card-title">
+                CTA
+            </span> -->
+
+            <h2 class="cta-heading card-title">
+                Ready to Own Your Dream Home?
+            </h2>
+
+            <p class="cta-description">
+                Talk to our experts and find the best property tailored to your budget.
+            </p>
+
+            <div class="mt-4">
+                <a href="/contact-us/" class="cta-btn">
+                    Get Free Consultation
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+ <style>
+        .faq-container {
+            max-width: 1000px;
+        }
+
+        .faq-item {
+            border: 1px solid #e5e5e5;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.8);
+            ;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+
+        .faq-icon {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            background: #fafafa;
+            padding: 0 18px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 18px;
+        }
+
+        .faq-item.to-show {
+            display: none;
+        }
+
+        .faq-item.visible {
+            display: block;
+        }
+
+        #faq-btn {
+            display: block;
+            float: right;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: underline;
+            border: none;
+            background-color: transparent;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/loan-calculation.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const faqs = document.querySelectorAll(".faq-item");
+            const faqsToShow = document.querySelectorAll(".faq-item.to-show");
+            const faqBtn = document.getElementById("faq-btn");
+
+            let expanded = false;
+
+            // Accordion toggle
+            faqs.forEach((faq) => {
+                const question = faq.querySelector(".faq-question");
+                if (!question) return;
+
+                question.addEventListener("click", () => {
+                    faqs.forEach(item => {
+                        if (item !== faq) item.classList.remove("active");
+                    });
+                    faq.classList.toggle("active");
+                });
+            });
+
+            // Show More / Show Less button
+            if (faqBtn) {
+                faqBtn.addEventListener("click", () => {
+
+                    expanded = !expanded;
+
+                    faqsToShow.forEach(faq => {
+                        faq.classList.toggle("visible", expanded);
+                    });
+
+                    faqBtn.textContent = expanded ? "Show Less" : "Show More";
+                });
+            }
+
+        });
+    </script>
+{% endblock %}

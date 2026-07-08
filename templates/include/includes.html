@@ -1,0 +1,415 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Skybyte Developers | Skybyte Developers in Sonipat{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Skybyte Developers is a leading real estate company providing quality homes, land, and commercial properties with modern amenities and high investment value. Explore projects now.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}Skybyte Developers,SkybyteDevelopers,Skybyte Developers{% endblock %}">
+    <link rel="canonical" href="{% block canonical_url %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endblock %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:site_name" content="Skybyte Developers">
+    <meta property="og:title" content="{% block og_title %}Skybyte Developers - Skybyte Developers in Sonipat{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Skybyte Developers is a leading real estate company providing quality homes, land, and commercial properties with modern amenities and high investment value. Explore projects now.{% endblock %}">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'logo/logo.png' %}{% endblock %}">
+    <meta property="og:image:alt" content="{% block og_image_alt %}Skybyte Developers Logo{% endblock %}">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Skybyte Developers - Skybyte Developers in Sonipat{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Skybyte Developers is a leading real estate company providing quality homes, land, and commercial properties with modern amenities and high investment value.{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'logo/logo.png' %}{% endblock %}">
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Skybyte Developers",
+        "url": "{{ request.scheme }}://{{ request.get_host }}/",
+        "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'logo/logo.png' %}",
+        "telephone": "+91-8307788221",
+        "email": "Info@skybytedevelopers.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "502 5th Floor, Light House Vatika Town Square, Vatika India Next Sector-82",
+            "addressLocality": "Gurugram",
+            "addressRegion": "Haryana",
+            "postalCode": "122004",
+            "addressCountry": "IN"
+        },
+        "sameAs": [
+            "https://www.facebook.com/people/Skybyte-Developers/61580705608968/",
+            "https://www.instagram.com/skybytedevelopers/",
+            "https://www.linkedin.com/company/skybyte-developers/"
+        ]
+    }
+    </script>
+    {% block schema_ld %}{% endblock %}
+    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon/favicon.svg' %}" />
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <meta name="google-site-verification" content="sZ8x53p20PUSvIjl31oxbv6UUAYYoDhhfAY9hcsMmFE" />
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow&amp;family=Barlow+Condensed&amp;family=Gilda+Display&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fancybox.css' %}">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P8YMCK2DD2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P8YMCK2DD2');
+</script>
+{% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+    <div class="disclaimer-container d-none" id="disclaimer-main">
+        <div class="disclaimer-content">
+            <div class="disclaimer-header">
+                <h2>Disclaimer</h2>
+            </div>
+            <div class="disclaimer-body">
+                <p>Thank you for visiting <strong>www.skybytedevelopers.com</strong></p>
+                <p>The aforesaid website is the only official website of SkyByte Developers (“Company”). Users are cautioned and advised not to rely upon any information stated on any other websites which may appear similar to the Company’s official website and/or contain the Company’s name, logo, or project-related information.</p>
+                <p>This website may contain proprietary notices and copyright information, the terms of which must be observed and followed.</p>
+                <p>Information on this website may be changed or updated without prior notice. The Company reserves the right to make improvements and/or changes in the projects, services, or content described at any time without notice.</p>
+                <p>By accessing this website, the user confirms that all information, including brochures, marketing collaterals, images, and project details, is provided solely for informational purposes and has not been relied upon for making any booking or purchase decision. Nothing on this website constitutes advertising, marketing, booking, selling, or an offer for sale, or an invitation to purchase any property.</p>
+                <p>All project details including layouts, specifications, amenities, services, and pricing are based on approved plans and are subject to modifications as per applicable laws and regulatory approvals. All visuals, images, renderings, and maps are artistic impressions and are indicative in nature unless explicitly stated otherwise.</p>
+                <p>The contents of this website are being updated in accordance with applicable laws including RERA regulations, and may not be fully aligned at all times. Users are advised to independently verify all project details with the Company’s authorized representatives before making any decision.</p>
+                <p>This website and its contents are provided on an “as is” and “as available” basis. No information provided herein creates any warranty or expands the scope of any warranty that cannot be disclaimed under applicable law. The use of this website is solely at the user’s own risk.</p>
+                <p>The Company disclaims all liability for any actions taken or not taken based on the content of this website. Under no circumstances shall the Company be liable for any loss, damage, or expense, including indirect or consequential loss, arising from the use of this website.</p>
+                <p>This website may contain links to third-party websites for user convenience. The Company does not control or endorse these websites and is not responsible for their content, accuracy, or practices. Users accessing such links do so at their own risk.</p>
+                <p>The Company makes no representations regarding any external websites accessed through this platform. Users are responsible for ensuring that any content accessed is free from harmful elements such as viruses or malware.</p>
+                <p>By using this website, the user agrees to all terms and conditions stated in this disclaimer without any limitation or qualification.</p>
+                <p>Queries, feedback, or submissions made through the website are not guaranteed to be monitored or acknowledged and shall not be considered as officially received by the Company.</p>
+                <p>The Company does not accept bookings or allotments based solely on the content, images, or information available on this website.</p>
+                <p>In no event shall the Company be liable for any direct, indirect, special, or consequential damages arising from the use of this website or any linked websites, including but not limited to loss of data, profits, or business interruption.</p>
+                <p>All matters arising from the use of this website shall be governed by the laws of India, and the courts in India shall have exclusive jurisdiction.</p>
+                <p>We thank you for your understanding.</p>
+            </div>
+            <div class="disclaimer-footer">
+                    <span>I have read & understood the disclaimer</span>
+                    <h5>I Agree</h5>
+            </div>
+        </div>
+    </div>
+    
+    <header class="custom-header">
+
+        <div class="maximum-width mx-auto">
+            <div class="d-flex justify-content-between align-items-center">
+
+                <!-- Logo -->
+                <div>
+                    <a href="/">
+                        <img src="{% static 'logo/logo.png' %}" alt="SkyByte Developers" class="logo-img desktop">
+                        <img src="{% static 'logo/logo.png' %}" alt="SkyByte Developers" class="logo-img mobile">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="d-none d-lg-flex align-items-center nav-menu">
+                    <a href="/" class="nav-link-custom">Home</a>
+                    <a href="/about-us/" class="nav-link-custom">About Us</a>
+                    <a href="/project/" class="nav-link-custom">Projects</a>
+                    <a href="/blog/" class="nav-link-custom">Blogs</a>
+                    <a href="/gallery/" class="nav-link-custom">Gallery</a>
+                    <a href="/contact-us/" class="nav-link-custom">Contact Us</a>
+                </nav>
+
+                <!-- Desktop Social -->
+                <div class="d-none d-lg-flex align-items-center social-media">
+                    <a href="https://www.facebook.com/people/Skybyte-Developers/61580705608968/?ref=1"
+                        class="social-icon" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/skybytedevelopers/" class="social-icon"><i
+                            class="fa-brands fa-instagram" target="_blank"></i></a>
+                    <a href="https://www.linkedin.com/company/skybyte-developers/" class="social-icon"
+                        target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <!-- <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a> -->
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="d-lg-none">
+                    <button id="menuToggle" class="menu-btn">
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Mobile Dropdown -->
+            <div id="mobileMenu" class="mobile-menu">
+
+                <div class="mobile-inner">
+
+                    <a href="/" class="mobile-nav-link-item">Home</a>
+                    <a href="/about-us/" class="mobile-nav-link-item">About Us</a>
+                    <a href="/project/" class="mobile-nav-link-item">Projects</a>
+                    <a href="/blog/" class="mobile-nav-link-item">Blogs</a>
+                    <a href="/contact-us/" class="mobile-nav-link-item">Contact Us</a>
+
+                    <div class="mobile-contact">
+                        <h5 class="mobile-heading">Get in Touch</h5>
+                        <p>
+                            <i class="fa-solid fa-location-dot mobile-icon"></i>
+                            502 5th Floor, Light House Vatika Town Square
+                            Vatika India Next Sector - 82, Gurgaon
+                        </p>
+
+                        <p>
+                            <i class="fa-solid fa-envelope mobile-icon"></i>
+                            <a href="mailto:Info@skybytedevelopers.com">Info@skybytedevelopers.com</a>
+                        </p>
+
+                        <p>
+                            <i class="fa-solid fa-phone mobile-icon"></i>
+                            <a href="tel:+918307788221">+91-8307788221</a>
+                        </p>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <a href="https://www.facebook.com/people/Skybyte-Developers/61580705608968/?ref=1"
+                            class="social-icon" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/skybytedevelopers/" class="social-icon" target="_blank"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/skybyte-developers/" class="social-icon"
+                            target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <!-- <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a> -->
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+<footer class="footer-section">
+
+        <div class="container-fluid maximum-width mx-auto">
+
+            <div class="row">
+
+                <!-- Column 1 -->
+                <div class="col-lg-3">
+                
+                    <div class="footer-center">
+                        <div class="mb-3">
+                            <a href="/"><img src="{% static 'logo/logo.png' %}" alt="SkyByte Developers - Footer Logo" class="footer-logo"></a>
+                        </div>
+                
+                        <p class="footer-description">
+                            Skybyte Buildtech Private Limited is a premium infrastructure-led builder creating smart, future-ready urban
+                            communities.
+                        </p>
+                
+                        <div class="footer-social">
+                            <a href="https://www.facebook.com/people/Skybyte-Developers/61580705608968/?ref=1" target="_blank"><i
+                                    class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/skybytedevelopers/" target="_blank"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/skybyte-developers/about/" target="_blank"><i
+                                    class="fa-brands fa-linkedin-in"></i></a>
+                            <!-- <a href="#"><i class="fa-brands fa-x-twitter"></i></a> -->
+                        </div>
+                    </div>
+                
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col-md-7 col-lg-6 mt-5 mt-lg-3 ps-lg-5">
+
+                    <div class="row ml-5">
+
+                        <div class="col-xs-6 col-6 mb-4 mb-md-0">
+                            <h5 class="footer-heading">Quick Links</h5>
+                            <ul class="footer-links">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/about-us/">About Us</a></li>
+                                <li><a href="/project/">Projects</a></li>
+                                <li><a href="/blog/">Blogs</a></li>
+                                <li><a href="/gallery/">Gallery</a></li>
+                                <li><a href="/contact-us/">Contact Us</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-xs-6 col-6">
+                            <h5 class="footer-heading">Support & Legal</h5>
+                            <ul class="footer-links">
+                                <li><a href="/home-loan-assistance/">Home Loan Assistance</a></li>
+                                <li><a href="/construction-updates/">Site Updates</a></li>
+                                <li><a href="/careers/">Careers</a></li>
+                                <li><a href="/disclaimer/">Disclaimer</a></li>
+                                <li><a href="/testimonials/">Testimonials</a></li>
+                                <li class="d-lg-none"><a href="/terms-conditions/">Terms & Conditions</a></li>
+                                <li class="d-lg-none"><a href="/privacy-policy/">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3 -->
+                <div class="col-md-5 col-lg-3 mt-5 mt-lg-3">
+                
+                    <h5 class="footer-heading">Get in Touch</h5>
+                
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fa-solid fa-location-dot me-2 footer-icon"></i>
+                            Plot no-10, Sector 80, Bahalgarh chowk Near Riom hospital Bahalgarh, Sonipat,
+                            Pin code-131021
+                        </li>
+                        <!-- <li>
+                                            <i class="fa-solid fa-location-dot me-2 footer-icon"></i>
+                                            95 South Park Avenue, USA
+                                        </li> -->
+                        <li>
+                            <a href="tel:+917840000428">
+                                <i class="fa-solid fa-phone me-2  footer-icon"></i>+91-7840000428
+                            </a><br>
+                        </li>
+                        <li>
+                            <a href="mailto:Info@skybytedevelopers.com">
+                                <i class="fa-solid fa-envelope me-2  footer-icon"></i>Info@skybytedevelopers.com
+                            </a>
+                        </li>
+                    </ul>
+                
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+
+                <p class="mb-0 text-center text-lg-start">
+                    2026 © Copyright
+                    <span class="fw-bold text-uppercase footer-icon">Skybyte Builtech Private Limited</span>.
+                    All rights reserved.
+                </p>
+
+                <div class="footer-legal d-none d-lg-flex">
+                    <a href="/terms-conditions/" class="designer-link">Terms & Conditions</a>
+                    <a href="/privacy-policy/" class="designer-link">Privacy Policy</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+    <!-- popup -->
+    <div class="popup-form-container d-none" id="popUp">
+        <div class="popup-form">
+            <div class="row">
+                <div class="col-lg-6 overflow-hidden desktop">
+                    <div class="contact-pop">
+                        <!-- <img src="./assets/images/banner/builder-floor.webp" alt=""> -->
+                    </div>
+                </div>
+                <div class="col-lg-6 p-lg-2">
+                    <div class="form-box p-4">
+                        <h2 class="section-title">Enquire Now</h2>
+                        <button class="popup-close">&times;</button>
+                        <form id="leadForm" class="form" method="post" novalidate>
+                            {% csrf_token %}
+                            <input type="hidden" name="project_slug" id="leadProjectSlug" value="">
+                            <input type="hidden" name="source" id="leadSource" value="website">
+
+                            <div class="form-item">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-item">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" placeholder="Your Email Address">
+                            </div>
+                            <div class="form-item">
+                                <label for="phone">Phone</label>
+                                <input type="tel" name="phone" id="phone" placeholder="Contact Number" required>
+                            </div>
+                            <div class="form-item">
+                                <label for="message">Message</label>
+                                <textarea rows="3" name="message" id="message"
+                                    placeholder="Tell us about your requirement"></textarea>
+                            </div>
+                            <div class="form-item" id="leadFormError" style="display:none;">
+                                <p style="color:#c0392b;font-size:13px;margin:0;"></p>
+                            </div>
+                            <div class="form-item">
+                                <button type="submit" id="leadSubmitBtn">
+                                    REQUEST A CALL BACK
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-open open-popup" data-source="get_quote">
+        <h6 class="section-title">Get Quote</h6>
+    </div>
+    <div class="floating-icon">
+        <a
+            href="https://wa.me/918307788221?text=Hello%2C%20I%20am%20interested%20in%20this%20project.%20Please%20share%20brochure%20and%20pricing%20details."><i
+                class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <div class="arrow-Top d-none " id="to-top">
+        <i class="fa-solid fa-angles-up"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/fancybox.umd.js' %}" defer></script>
+    <script src="{% static 'js/header.js' %}" defer></script>
+    <script src="{% static 'js/disclaimer.js' %}"></script>
+    <script src="{% static 'js/service-swiper.js' %}" defer></script>
+    <script src="{% static 'js/accordian-investment.js' %}" defer></script>
+    <script src="{% static 'js/fancybox-gallery.js' %}" defer></script>
+    <script>
+        window.submitLeadUrl = "{% url 'project:submit_lead' %}";
+    </script>
+    <script src="{% static 'js/popup.js' %}" defer></script>
+    
+    {% block extra_js %}{% endblock %}
+    <script>
+
+    </script>
+</body>
+
+</html>

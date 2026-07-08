@@ -1,0 +1,351 @@
+{% extends "include/includes.html" %}
+{% load static %}
+
+{% block title %}Construction Updates - SkyByte Developers{% endblock %}
+{% block meta_description %}Track real-time construction updates and site progress of SkyByte Developers projects. View raw footage, photos, and detailed progress reports from our ongoing developments.{% endblock %}
+{% block meta_keywords %}construction updates, site progress, project updates, construction photos, real estate updates{% endblock %}
+
+{% block og_title %}Construction Updates - SkyByte Developers{% endblock %}
+{% block og_description %}Track real-time construction updates and site progress of SkyByte Developers projects.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/coming-soon-banner.jpeg' %}{% endblock %}
+{% block og_image_alt %}Construction Updates - SkyByte Developers{% endblock %}
+{% block twitter_title %}Construction Updates - SkyByte Developers{% endblock %}
+{% block twitter_description %}Track real-time construction updates and site progress of SkyByte Developers projects.{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/coming-soon-banner.jpeg' %}{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Construction Updates", "item": "{{ request.scheme }}://{{ request.get_host }}/construction-updates/" }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<main>
+    <!-- Hero Section -->
+    <section class="cu-hero">
+        <div class="cu-hero-overlay"></div>
+        <div class="cu-hero-content">
+            <h1>Construction Updates</h1>
+            <p>Real Updates. Real Progress. Real Transparency.</p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section cu-benefits-section">
+        <div class="maximum-width mx-auto">
+            <div class="cu-benefits-grid">
+                <div class="cu-benefit-card">
+                    <div class="cu-benefit-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Real Raw Footage</h3>
+                    <p>Unedited construction videos showing actual progress on the ground</p>
+                </div>
+
+                <div class="cu-benefit-card">
+                    <div class="cu-benefit-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Photo Updates</h3>
+                    <p>High-resolution images capturing every stage of construction</p>
+                </div>
+
+                <div class="cu-benefit-card">
+                    <div class="cu-benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Timely Updates</h3>
+                    <p>Regular updates to keep you informed about project milestones</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Raw Videos Section -->
+    <section class="section cu-videos-section bt">
+        <div class="maximum-width mx-auto">
+            <div class="cu-section-header">
+                <span class="section-subtitle">Project Progress</span>
+                <h2 class="section-heading">Raw Construction Videos</h2>
+                <p>Watch unedited footage of our ongoing construction projects</p>
+            </div>
+
+            <div class="cu-videos-carousel">
+                <div class="cu-video-card">
+                    <div class="cu-video-container">
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="cu-video-info">
+                        <h4>Foundation Work Progress</h4>
+                        <p class="cu-video-date">May 2026</p>
+                        <p class="cu-video-desc">Foundation and underground work completed. Progress at 40%</p>
+                    </div>
+                </div>
+
+                <div class="cu-video-card">
+                    <div class="cu-video-container">
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="cu-video-info">
+                        <h4>Structural Work Update</h4>
+                        <p class="cu-video-date">April 2026</p>
+                        <p class="cu-video-desc">Columns and beams under construction. Progress at 25%</p>
+                    </div>
+                </div>
+
+                <div class="cu-video-card">
+                    <div class="cu-video-container">
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="cu-video-info">
+                        <h4>Site Preparation Complete</h4>
+                        <p class="cu-video-date">March 2026</p>
+                        <p class="cu-video-desc">Site cleared and prepared. Progress at 10%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Construction Images Gallery with Filters -->
+    <section class="section cu-gallery-section bt">
+        <div class="maximum-width mx-auto">
+            <div class="cu-section-header">
+                <span class="section-subtitle">Visual Progress</span>
+                <h2 class="section-heading">Construction Photo Gallery</h2>
+                <p>High-resolution images from every stage of construction</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="cu-filter-buttons">
+                <button class="cu-filter-btn active" data-filter="all">All</button>
+                <button class="cu-filter-btn" data-filter="site-prep">Site Preparation</button>
+                <button class="cu-filter-btn" data-filter="foundation">Foundation Work</button>
+                <button class="cu-filter-btn" data-filter="structure">Column Casting</button>
+                <button class="cu-filter-btn" data-filter="slab">Slab Work</button>
+                <button class="cu-filter-btn" data-filter="brick">Brick Work</button>
+                <button class="cu-filter-btn" data-filter="structure-complete">Structure Progress</button>
+                <button class="cu-filter-btn" data-filter="latest">Latest Progress</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="cu-gallery-grid">
+                <!-- Site Preparation Images -->
+                <div class="cu-gallery-item" data-category="site-prep">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Site Preparation - Clearing and Leveling">
+                    <div class="cu-gallery-overlay">
+                        <h4>Site Clearing</h4>
+                        <p>March 2026</p>
+                    </div>
+                </div>
+
+                <div class="cu-gallery-item" data-category="site-prep">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Site Preparation - Boundary Wall">
+                    <div class="cu-gallery-overlay">
+                        <h4>Boundary Wall</h4>
+                        <p>March 2026</p>
+                    </div>
+                </div>
+
+                <!-- Foundation Work Images -->
+                <div class="cu-gallery-item" data-category="foundation">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Foundation Work - Excavation">
+                    <div class="cu-gallery-overlay">
+                        <h4>Excavation Work</h4>
+                        <p>April 2026</p>
+                    </div>
+                </div>
+
+                <div class="cu-gallery-item" data-category="foundation">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Foundation Work - Concrete Pouring">
+                    <div class="cu-gallery-overlay">
+                        <h4>Foundation Concrete</h4>
+                        <p>April 2026</p>
+                    </div>
+                </div>
+
+                <!-- Column Casting Images -->
+                <div class="cu-gallery-item" data-category="structure">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Column Casting - Steel Fixing">
+                    <div class="cu-gallery-overlay">
+                        <h4>Column Formwork</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+
+                <div class="cu-gallery-item" data-category="structure">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Column Casting - Concrete Pour">
+                    <div class="cu-gallery-overlay">
+                        <h4>Concrete Pouring</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+
+                <!-- Slab Work Images -->
+                <div class="cu-gallery-item" data-category="slab">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Slab Work - Reinforcement">
+                    <div class="cu-gallery-overlay">
+                        <h4>Slab Reinforcement</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+
+                <div class="cu-gallery-item" data-category="slab">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Slab Work - Concreting">
+                    <div class="cu-gallery-overlay">
+                        <h4>Slab Concreting</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+
+                <!-- Brick Work Images -->
+                <div class="cu-gallery-item" data-category="brick">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Brick Work - Wall Construction">
+                    <div class="cu-gallery-overlay">
+                        <h4>Brick Masonry</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+
+                <div class="cu-gallery-item" data-category="brick">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Brick Work - Progress">
+                    <div class="cu-gallery-overlay">
+                        <h4>Wall Progress</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+
+                <!-- Structure Progress Images -->
+                <div class="cu-gallery-item" data-category="structure-complete">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Structure - Multi-Story Building">
+                    <div class="cu-gallery-overlay">
+                        <h4>Structure Complete</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+
+                <div class="cu-gallery-item" data-category="structure-complete">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Structure - Roofing Work">
+                    <div class="cu-gallery-overlay">
+                        <h4>Roofing Progress</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+
+                <!-- Latest Progress Images -->
+                <div class="cu-gallery-item" data-category="latest">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Latest - Finishing Work">
+                    <div class="cu-gallery-overlay">
+                        <h4>Finishing Work</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+
+                <div class="cu-gallery-item" data-category="latest">
+                    <img src="{% static 'images/coming-soon.jpg' %}" alt="Latest - Final Updates">
+                    <div class="cu-gallery-overlay">
+                        <h4>Latest Updates</h4>
+                        <p>May 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section cu-newsletter-section">
+        <div class="maximum-width mx-auto">
+            <div class="cu-newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Get notified about the latest construction updates and project milestones</p>
+                <form action="{% url 'submit_newsletter' %}" method="post" class="cu-newsletter-form">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="cta-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cu-cta-section">
+        <div class="maximum-width mx-auto">
+            <h2>Have Questions About Our Projects?</h2>
+            <p>Contact our team for more information about construction progress and timelines</p>
+            <div class="cu-cta-buttons">
+                <a href="/contact-us/" class="cta-button">Get in Touch</a>
+                <a href="/project/" class="cta-button-secondary">View Projects</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    document.querySelectorAll('.cu-filter-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            document.querySelectorAll('.cu-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            document.querySelectorAll('.cu-gallery-item').forEach(item => {
+                if (filter === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    if (item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+
+    // Newsletter form submission
+    document.querySelector('.cu-newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const form = this;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Thank you for subscribing! You will receive updates about our construction progress.');
+                form.reset();
+            } else {
+                alert(data.error || 'Something went wrong. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        });
+    });
+</script>
+{% endblock %}

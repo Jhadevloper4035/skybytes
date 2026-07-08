@@ -1,0 +1,365 @@
+{% extends 'include/includes.html' %}
+{% load static %}
+{% block title %}SKY BYTE DEVELOPERS | Careers{% endblock %}
+{% block meta_description %}Join the SkyByte Developers team. Explore career opportunities in real estate, construction, sales, and management. Build your future with us.{% endblock %}
+{% block meta_keywords %}SkyByte Developers careers, real estate jobs Haryana, property developer jobs Gurgaon{% endblock %}
+{% block og_title %}Careers - SkyByte Developers{% endblock %}
+{% block og_description %}Join the SkyByte Developers team. Explore exciting career opportunities in real estate and construction.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/career.webp' %}{% endblock %}
+{% block og_image_alt %}Careers at SkyByte Developers{% endblock %}
+{% block twitter_title %}Careers - SkyByte Developers{% endblock %}
+{% block twitter_description %}Join the SkyByte Developers team. Explore exciting career opportunities in real estate and construction.{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/career.webp' %}{% endblock %}
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Careers", "item": "{{ request.scheme }}://{{ request.get_host }}/careers/" }
+    ]
+}
+</script>
+{% endblock %}
+{% block content %}
+    <main>
+        <section class="page-layout">
+            <div>
+                <div class="w-100 h-100 overflow-hidden">
+                    <img src="{% static 'images/banner/career.webp' %}" alt="Careers at SkyByte Developers" class="page-layout-img">
+                </div>
+                <div class="about-nav d-flex gap-2 align-items-center justify-content-center mt-4">
+
+                    <a href="#open-position" class="about-link nav-link">Open Position</a>
+                    <a href="#culture" class="about-link nav-link">Our Culture</a>
+                    <a href="#values" class="about-link nav-link">Our Values</a>
+                    <a href="#apply" class="about-link nav-link">Apply Now</a>
+
+                </div>
+            </div>
+        </section>
+        <section class="section bt" id="open-position">
+            <div class="maximum-width mx-auto">
+                <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                    <div>
+                        <span class="section-subtitle">
+                            CAREER OPPORTUNITIES
+                        </span>
+
+                        <h2 class="section-title section-heading">
+                            Join our team
+                        </h2>
+                    </div>
+
+                    <p class="d-none d-lg-block section-description">
+                        At Sky Byte Developers, we believe exceptional spaces are created by exceptional people. We are
+                        always looking for passionate professionals who want to grow and make an impact in the real
+                        estate industry.
+                    </p>
+
+                </div>
+                <div class="row margin-top">
+
+                    <div class="col-lg-4">
+                        <div class="p-3 py-lg-5 px-lg-4  border job-card">
+                            <h4 class="section-title">Sales Manager</h4>
+                            <div class="d-flex gap-2 my-3">
+                                <span><i class="fa-solid fa-house-laptop"></i>Gurgaon</span>
+                                <span><i class="fa-solid fa-user-clock"></i>Full Time</span>
+                            </div>
+                            <p><strong>ROLE: </strong>Drive residential sales growth by managing client relationships,
+                                leading the sales team, and ensuring a seamless property buying experience for
+                                customers.</p>
+                            <a href="#apply" class="btn-primary mt-3">
+                                Apply Now
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="p-3 py-lg-5 px-lg-4  border job-card">
+                            <h4 class="section-title">Sales Executive</h4>
+                            <div class="d-flex gap-2 my-3">
+                                <span><i class="fa-solid fa-map-pin"></i>Gurgaon</span>
+                                <span><i class="fa-solid fa-user-clock"></i>Full Time</span>
+                            </div>
+                            <p><strong>ROLE: </strong>Assist customers in discovering the right property while building
+                                strong relationships and delivering excellent sales experiences.</p>
+                            <a href="#apply" class="btn-primary mt-3">
+                                Apply Now
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="p-3 py-lg-5 px-lg-4  border job-card">
+                            <h4 class="section-title">Site Engineer</h4>
+                            <div class="d-flex gap-2 my-3">
+                                <span><i class="fa-solid fa-map-pin"></i>Gurgaon</span>
+                                <span><i class="fa-solid fa-user-clock"></i>Full Time</span>
+                            </div>
+                            <p><strong>ROLE: </strong>Supervise construction activities, manage project execution, and
+                                ensure quality standards are maintained on-site.</p>
+                            <a href="#apply" class="btn-primary mt-3">
+                                Apply Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section expertise-section bt" id="culture">
+            <div class="maximum-width mx-auto">
+                <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                    <div>
+                        <span class="section-subtitle">
+                            OUR CULTURE
+                        </span>
+
+                        <h2 class="section-title section-heading">
+                            Why join skyByte developers
+                        </h2>
+                    </div>
+
+                    <p class="d-none d-lg-block section-description">
+                        At Sky Byte Developers, we believe great projects are built by great people. We foster a
+                        collaborative environment where innovation, quality, and growth are encouraged at every level of
+                        the organization.
+                    </p>
+
+                </div>
+                <div class="row margin-top g-3">
+
+                    <div class="col-lg-6">
+                        <div class="why-card">
+                            <div class="text-stroke section-title">
+                                1
+                            </div>
+                            <div>
+                                <h3 class="section-title mb-3">Career Growth</h3>
+                                <p>We provide opportunities for continuous learning, mentorship, and leadership
+                                    development to help our employees grow professionally.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="why-card">
+
+                            <div class="text-stroke section-title">
+                                2
+                            </div>
+                            <div>
+                                <h3 class="section-title mb-3">Impactful Projects</h3>
+                                <p>Work on landmark residential and commercial developments that shape modern
+                                    communities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="why-card">
+                            <div class="text-stroke section-title">
+                                3
+                            </div>
+                            <div>
+                                <h3 class="section-title mb-3">Collaborative Culture</h3>
+                                <p>Our teams work closely across departments, encouraging innovation and creative
+                                    problem solving.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="why-card">
+                            <div class="text-stroke section-title">
+                                4
+                            </div>
+                            <div>
+                                <h3 class="section-title mb-3">Competitive Benefits</h3>
+                                <p>We offer attractive compensation, performance incentives, and a supportive work
+                                    environment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="section expertise-section bt" id="values">
+            <div class="maximum-width mx-auto">
+                <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                    <div>
+                        <span class="section-subtitle">
+                            OUR VALUES
+                        </span>
+
+                        <h2 class="section-title section-heading">
+                            What drives us
+                        </h2>
+                    </div>
+
+                    <p class="d-none d-lg-block section-description">
+                        At Sky Byte Developers, our work is guided by strong values that shape every project we build
+                        and every relationship we create. Our team is driven by quality, innovation, and a commitment to
+                        creating exceptional living spaces.
+                    </p>
+
+                </div>
+                <div class="row margin-top g-3">
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/quality.png' %}" alt="Quality First - SkyByte Developers Value">
+                            </div>
+                            <h3 class="card-title mb-3">Quality First</h3>
+                            <p>We build developments designed for durability, comfort, and long-term value for our
+                                customers and communities.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/integrity.png' %}" alt="Integrity - SkyByte Developers Value">
+                            </div>
+                            <h3 class="card-title mb-3">Integrity</h3>
+                            <p>Transparency, honesty, and ethical practices guide every decision we make as an
+                                organization.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/innovation.png' %}" alt="Innovation - SkyByte Developers Value">
+                            </div>
+                            <h3 class="card-title mb-3">Innovation</h3>
+                            <p>We embrace modern architecture, technology, and sustainable building practices.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="expertise-card">
+                            <div class="expertise-icon mb-4">
+                                <img src="{% static 'icons/commitment.png' %}" alt="Commitment - SkyByte Developers Value">
+                            </div>
+                            <h3 class="card-title mb-3">Customer Commitment</h3>
+                            <p>Every project is designed with the goal of delivering exceptional value and experience to
+                                our customers.</p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="section contact-section bt bb" id="apply">
+            <div class="maximum-width mx-auto">
+                <div class="d-flex justify-content-between align-items-end flex-nowrap">
+
+                    <div>
+                        <span class="section-subtitle">
+                            APPLY NOW
+                        </span>
+
+                        <h2 class="section-title section-heading">
+                            Submit your application
+                        </h2>
+                    </div>
+
+                    <p class="d-none d-lg-block section-description">
+                        Interested in joining our team? Submit your details below and our HR team will get in touch if
+                        your profile matches our requirements.
+                    </p>
+
+                </div>
+                <div class="contact-form margin-top">
+                    <div class="row align-items-start">
+
+                        <div class="col-lg-8">
+
+                            <form action="" method="post" class="form">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-item">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name" id="name" placeholder="Full Name" required>
+                                    </div>
+                                    <div class="form-item">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" id="email" placeholder="Your Email Address" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-item">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" name="phone" id="phone" placeholder="Contact Number" required>
+                                    </div>
+                                    <div class="form-item">
+                                        <label for="position">Position Applying For</label>
+                                        <input type="text" name="position" id="position" placeholder="Designation" required>
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <label for="resume">Upload Resume</label>
+                                    <div class="position-relative" style="margin-bottom: 32px;">
+                                        <div class="custom-file">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="text-zinc-400 group-hover:text-zinc-900 transition-colors duration-500">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="17 8 12 3 7 8"></polyline>
+                                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                                            </svg>
+                                            <p class="card-title">
+                                                Upload Your Resume
+                                            </p>
+                                            <p class="">
+                                                PDF, docx (Max 10MB)
+                                            </p>
+                                            <input type="file" accept=".pdf,.docx" name="resume" id="resume">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <label for="message">Message</label>
+                                    <textarea rows="5" name="message" id="message"
+                                        placeholder="Tell us about your requirement"></textarea>
+                                </div>
+                                <div class="form-item">
+                                    <button type="submit">
+                                        Submit Application
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="hr-contact border">
+                                <h4 class="section-title">CAREERS SUPPORT</h4>
+                                <p>If you have questions regarding career opportunities or recruitment at Sky Byte
+                                    Developers, feel free to contact our HR team.</p>
+                                <a href="mailto:careers@skybytedevelopers.com" class="section-description"><i
+                                        class="fa-solid fa-envelope mr-1"></i>careers@skybytedevelopers.com</a>
+                            </div>
+                            <div class="hr-contact border">
+                                <h4 class="section-title">Application Tips:</h4>
+                                <ul>
+                                    <li>Keep your resume concise and relevant</li>
+                                    <li>Highlight projects or achievements</li>
+                                    <li>Include links to portfolio or LinkedIn</li>
+                                    <li>Ensure contact details are correct</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+{% endblock %}

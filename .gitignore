@@ -1,0 +1,88 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+!.env.development.example
+*.local
+*.secret
+*.secrets
+secrets/
+credentials/
+
+# Certificates and keys
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Database files and dumps
+*.sqlite3
+*.db
+*.sql
+*.dump
+*.bak
+*.backup
+mysql_data/
+
+# Logs and runtime files
+logs/
+*.log
+*.pid
+*.sock
+
+# Collected/generated uploads
+staticfiles/
+media/
+
+# Sensitive documents
+private_docs/
+sensitive_docs/
+confidential/
+documents/private/
+documents/sensitive/
+*confidential*
+*sensitive*
+*credential*
+*password*
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+*.pdf
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Docker/local tooling
+.docker/
+docker-compose.override.yml

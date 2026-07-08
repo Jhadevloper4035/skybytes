@@ -1,0 +1,356 @@
+{% extends 'include/includes.html' %}
+{% load static %}
+{% block title %}About Us - SkyByte Developers{% endblock %}
+{% block meta_description %}Learn about SkyByte Developers - a premium real estate developer delivering quality residential and commercial projects in Haryana with a focus on innovation and transparency.{% endblock %}
+{% block meta_keywords %}SkyByte Developers about us, real estate developer Haryana, Gurgaon property developer{% endblock %}
+{% block og_title %}About Us - SkyByte Developers{% endblock %}
+{% block og_description %}Learn about SkyByte Developers - a premium real estate developer delivering quality residential and commercial projects in Haryana.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/about-us-banner.webp' %}{% endblock %}
+{% block og_image_alt %}About SkyByte Developers{% endblock %}
+{% block twitter_title %}About Us - SkyByte Developers{% endblock %}
+{% block twitter_description %}Learn about SkyByte Developers - a premium real estate developer delivering quality residential and commercial projects in Haryana.{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/about-us-banner.webp' %}{% endblock %}
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "About Us", "item": "{{ request.scheme }}://{{ request.get_host }}/about-us/" }
+    ]
+}
+</script>
+{% endblock %}
+{% block content %}
+    <main>
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="about-hero-overlay"></div>
+            <div class="about-hero-content">
+                <h1>About SkyByte Developers</h1>
+                <p>Building trust, creating futures, delivering excellence</p>
+            </div>
+        </section>
+        <!-- Who We Are Section -->
+        <section class="section about-who bt" id="who">
+            <div class="maximum-width mx-auto">
+                <div class="about-who-wrapper">
+                    <div class="who-content">
+                        <span class="section-subtitle">Who We Are</span>
+                        <h2 class="section-heading">We are SkyByte Developers</h2>
+                        <p class="about-intro">A visionary real estate developer committed to building trust, creating exceptional living spaces, and delivering lasting value to our clients.</p>
+
+                        <div class="about-description">
+                            <p>SkyByte Developers is a name to reckon with in the real estate world, built on foundations of dreams, happiness, and trust—not just brick and stone. We act as a bridge between safe investment opportunities and modern lifestyle, ensuring every property meets current needs while guaranteeing strong returns.</p>
+                        </div>
+                    </div>
+
+                    <div class="who-image">
+                        <img src="{% static 'images/banner/about-us-banner.webp' %}" alt="SkyByte Developers Office">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision Section -->
+        <section class="section mission-vision-section bt">
+            <div class="maximum-width mx-auto">
+                <div class="mv-container">
+                    <!-- Mission Card -->
+                    <div class="mv-card mission-card">
+                        <div class="mv-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>To deliver world-class infrastructure and residential facilities that combine quality, innovation, and transparency. We are committed to creating sustainable communities that enhance lives, provide exceptional value, and build lasting relationships with our customers.</p>
+                        <ul class="mv-highlights">
+                            <li><i class="fas fa-check-circle"></i> Quality Construction</li>
+                            <li><i class="fas fa-check-circle"></i> Customer Focus</li>
+                            <li><i class="fas fa-check-circle"></i> Transparency</li>
+                            <li><i class="fas fa-check-circle"></i> Innovation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Vision Card -->
+                    <div class="mv-card vision-card">
+                        <div class="mv-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>To be the most trusted real estate developer in India, recognized for creating vibrant communities where families thrive and investments flourish. We envision a future where every property represents not just a home, but a gateway to a better lifestyle and sustainable growth.</p>
+                        <ul class="mv-highlights">
+                            <li><i class="fas fa-star"></i> Market Leadership</li>
+                            <li><i class="fas fa-star"></i> Sustainable Growth</li>
+                            <li><i class="fas fa-star"></i> Customer Trust</li>
+                            <li><i class="fas fa-star"></i> Innovation Excellence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision & Values Section -->
+        <section class="section about-vision bt">
+            <div class="maximum-width mx-auto">
+                <div class="vision-header">
+                    <span class="section-subtitle">Our Foundation</span>
+                    <h2 class="section-heading">Built on Four Pillars</h2>
+                </div>
+
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-map-pin"></i>
+                        </div>
+                        <h3>Strategic Locations</h3>
+                        <p>We select prime locations with strong growth potential, considering connectivity, government initiatives, and industrial expansion to position clients at the center of development.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Transparency</h3>
+                        <p>Complete legal clarity and openness in all dealings. Every detail is shared to ensure safe, stress-free investments with full customer confidence.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>Quality Excellence</h3>
+                        <p>Uncompromised construction quality using modern architecture and latest techniques. Every project is sustainable, aesthetically outstanding, and built to last.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Customer-Centric</h3>
+                        <p>Clients are family. We provide expert investment advice, personalized property options, and professional guidance aligned with individual goals and financial situations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section about-stats">
+            <div class="maximum-width mx-auto">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 class="stat-number">2</h3>
+                        <p class="stat-text">Projects Ongoing</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">50+</h3>
+                        <p class="stat-text">Channel Associate</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">8.33</h3>
+                        <p class="stat-text">Acres Under Development</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">1+</h3>
+                        <p class="stat-text">Years of Excellence</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Journey Section -->
+        <section class="section about-journey bt" id="what">
+            <div class="maximum-width mx-auto">
+                <div class="journey-header">
+                    <span class="section-subtitle">Our Journey</span>
+                    <h2 class="section-heading">A Timeline of Growth</h2>
+                    <p class="journey-description">From our humble beginnings in 2012 to becoming a trusted name in real estate, our journey reflects our commitment to quality, innovation, and customer trust.</p>
+                </div>
+                <div class="timeline-grid">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012</div>
+                        <div class="timeline-content">
+                            <h3>The Foundation</h3>
+                            <p>Established with a vision to create thoughtfully planned residential communities built on quality and trust.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2014</div>
+                        <div class="timeline-content">
+                            <h3>Early Planning</h3>
+                            <p>Land acquisitions and strategic planning shaped the foundation for future residential developments.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016</div>
+                        <div class="timeline-content">
+                            <h3>First Initiatives</h3>
+                            <p>Began executing first residential development initiatives focused on modern design and efficient planning.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <div class="timeline-content">
+                            <h3>Strengthening Presence</h3>
+                            <p>Successfully launched key residential projects delivering quality construction and customer-focused spaces.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021</div>
+                        <div class="timeline-content">
+                            <h3>Expanding Portfolio</h3>
+                            <p>Broadened portfolio to include premium residential plots and thoughtfully planned developments.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-content">
+                            <h3>Building the Future</h3>
+                            <p>Continue building sustainable communities designed for comfort, innovation, and long-term value.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section about-team bt" id="team">
+            <div class="maximum-width mx-auto">
+                <div class="team-header">
+                    <span class="section-subtitle">Meet Our Team</span>
+                    <h2 class="section-heading">The People Behind the Vision</h2>
+                </div>
+
+                <!-- Founder Section -->
+                <div class="founder-section">
+                    <div class="founder-wrapper">
+                        <div class="founder-image">
+                            <img src="{% static 'team/vinod.webp' %}" alt="Vinod Kumar - Director">
+                            <div class="founder-social">
+                                <a href="https://www.facebook.com/profile.php?id=61580705608968" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/skybytedevelopers" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/company/skybyte-developers/" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="founder-content">
+                            <span class="founder-label">Director's Vision</span>
+                            <h3>Vinod Kumar</h3>
+                            <p class="founder-title">Visionary Director & Founder</p>
+
+                            <p>With decades of experience in construction and real estate, Vinod Kumar has shaped SkyByte into a trusted, innovative company. His expertise spans project planning, sustainable design, and customer-centric solutions.</p>
+
+                            <p>Under his leadership, we've delivered diverse portfolios while maintaining unwavering commitment to quality, transparency, and excellence. Vinod Kumar's strategic vision continues driving sustainable community development focused on comfort and long-term value.</p>
+
+                            <div class="founder-quote">
+                                "Trust is our biggest capital. Quality is our promise. Innovation is our path."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Members -->
+                <div class="team-members-section">
+                    <h3 class="team-subtitle">Our Leadership Team</h3>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-card-image">
+                                <img src="{% static 'team/shiv.jpg' %}" alt="Shiv Narain Saxena - HR Manager">
+                            </div>
+                            <div class="team-card-content">
+                                <h4>Shiv Narain Saxena</h4>
+                                <p class="team-role">HR Manager</p>
+                                <p class="team-bio">8+ years of expertise in HR management, business operations, and legal compliance. Dedicated to building efficient workplace systems and supporting organizational growth.</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="team-card-image">
+                                <img src="{% static 'team/nayan.jpeg' %}" alt="Mr. Nayan Sharma - Operational Manager">
+                            </div>
+                            <div class="team-card-content">
+                                <h4>Mr. Nayan Sharma</h4>
+                                <p class="team-role">Operational Manager</p>
+                                <p class="team-bio">Experienced operations professional with expertise in project management, process optimization, and team coordination. Ensures seamless execution of all projects.</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="team-card-image">
+                                <img src="{% static 'team/raj.jpeg' %}" alt="Raj Kumar - Sales Head">
+                            </div>
+                            <div class="team-card-content">
+                                <h4>Raj Kumar</h4>
+                                <p class="team-role">Sales Head</p>
+                                <p class="team-bio">Dynamic sales leader with deep market knowledge and client relationship expertise. Drives business growth while maintaining exceptional customer satisfaction.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section about-gallery bt">
+            <div class="maximum-width mx-auto">
+                <div class="gallery-header">
+                    <h2 class="section-heading">About SkyByte Developers</h2>
+                    <p>Explore our facilities, projects, and workspace</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item gallery-item-large">
+                        <img src="{% static 'images/banner/about-us-banner.webp' %}" alt="SkyByte Developers - Office">
+                        <div class="gallery-overlay">
+                            <span>Our Office</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{% static 'images/banner/contact.avif' %}" alt="SkyByte Developers - Workspace">
+                        <div class="gallery-overlay">
+                            <span>Workspace</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{% static 'images/banner/urban.webp' %}" alt="SkyByte Developers - Projects">
+                        <div class="gallery-overlay">
+                            <span>Our Projects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+             <section class="cta-section position-relative"
+            style="background-image: radial-gradient(circle at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.09) 100%),url('{% static "images/banner/urban.webp" %}');background-size: cover;background-position: center;background-repeat: no-repeat;">
+            <!-- Overlay -->
+            <div class="cta-overlay d-flex align-items-center justify-content-center text-center">
+
+                <div class="cta-content text-white">
+
+                    <h2 class="cta-heading card-title">
+                        Experience the Future of Urban Living
+                    </h2>
+
+                    <p class="cta-description">
+                        Discover thoughtfully designed homes surrounded by green landscapes, seamless connectivity, and
+                        premium amenities. Our developments combine architectural excellence with sustainable planning
+                        to create spaces where families thrive.
+                    </p>
+
+                    <div class="mt-4">
+                        <a href="/project/" class="cta-btn">
+                            Explore Our Projects
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+{% endblock %}

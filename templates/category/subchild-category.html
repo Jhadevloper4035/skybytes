@@ -1,0 +1,243 @@
+{% extends "include/includes.html" %}
+{% load static %}
+
+{% block title %}{{ project_link.meta_title|default:project_link.name }} - SkyByte Developers{% endblock %}
+{% block meta_description %}{{ project_link.meta_desc|default:project_link.name }}{% endblock %}
+{% block meta_keywords %}{{ project_link.meta_keyword|default:'' }}{% endblock %}
+
+{% block og_title %}{{ project_link.meta_title|default:project_link.name }} - SkyByte Developers{% endblock %}
+{% block og_description %}{{ project_link.meta_desc|default:project_link.name }}{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/coming-soon-banner.jpeg' %}{% endblock %}
+{% block og_image_alt %}{{ project_link.name }}{% endblock %}
+{% block twitter_title %}{{ project_link.meta_title|default:project_link.name }} - SkyByte Developers{% endblock %}
+{% block twitter_description %}{{ project_link.meta_desc|default:project_link.name }}{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/coming-soon-banner.jpeg' %}{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "{{ subcategory.cat_name|escapejs }}", "item": "{{ request.scheme }}://{{ request.get_host }}/{{ subcategory.cat_slug }}/" },
+        { "@type": "ListItem", "position": 3, "name": "{{ project_link.name|escapejs }}", "item": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== BANNER ===== -->
+<section class="page-layout">
+    <div>
+        <div class="w-100 h-100 overflow-hidden">
+            <img src="{% static 'images/coming-soon-banner.jpeg' %}"
+                 alt="{{ project_link.name }} - Banner"
+                 class="page-layout-img page-layout-full"
+                 style="object-position: bottom;">
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROJECTS LISTING ===== -->
+<section class="section bt">
+    <div class="maximum-width mx-auto">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb" style="font-size:13px; gap:6px; list-style:none; display:flex; flex-wrap:wrap; padding:0; margin:0;">
+                <li class="breadcrumb-item"><a href="/" style="color:var(--primary-color,#1a6e8e); text-decoration:none;">Home</a></li>
+                <li style="color:#999;">/</li>
+                <li class="breadcrumb-item" style="color:#666;">{{ subcategory.cat_name }}</li>
+                <li style="color:#999;">/</li>
+                <li class="breadcrumb-item active" style="color:#333; font-weight:600;" aria-current="page">{{ project_link.name }}</li>
+            </ol>
+        </nav>
+
+        <!-- Section Header -->
+        <div class="d-flex justify-content-between align-items-end flex-wrap mb-4">
+            <div>
+                <span class="section-subtitle">{{ subcategory.cat_name }}</span>
+                <h1 class="section-title section-heading">{{ project_link.name }}</h1>
+            </div>
+            <p class="d-none d-lg-block section-description">
+                {% with count=projects.count %}
+                {{ count }} project{{ count|pluralize }} available
+                {% endwith %}
+            </p>
+        </div>
+
+        <!-- Page Content (editorial / SEO rich text from ProjectLinks.content) -->
+        {% if project_link.content %}
+        <div class="subchild-page-content mb-5">
+            {{ project_link.content|safe }}
+        </div>
+        {% endif %}
+
+        <!-- ===== PROJECT CARDS ===== -->
+        {% if projects %}
+        <div class="row margin-top gy-4 gx-md-4 gx-lg-5">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4">
+                <div class="featured-card">
+
+                    <!-- Image -->
+                    <div class="featured-image-wrapper">
+                        <a href="{{ project.get_absolute_url }}">
+                            {% with first_img=project.projectimage.first %}
+                            {% if first_img %}
+                            <img src="{{ first_img.project_image.url }}" alt="{{ project.name }}">
+                            {% else %}
+                            <img src="{% static 'images/coming-soon.jpg' %}" alt="{{ project.name }}">
+                            {% endif %}
+                            {% endwith %}
+                        </a>
+                        {% if project.isFeatured %}
+                        <span class="subchild-badge">Featured</span>
+                        {% endif %}
+                        <div class="vertical-btn">
+                            <a href="{{ project.get_absolute_url }}">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="featured-info">
+                        <a href="{{ project.get_absolute_url }}">
+                            <div class="d-flex justify-content-between align-items-start flex-wrap">
+                                <div style="flex:1; min-width:0;">
+                                    <h3 class="project-title">{{ project.name }}</h3>
+
+                                    {% with cats=project.category.all %}
+                                    {% if cats %}
+                                    <p class="project-type">
+                                        <span>Type</span>: {{ cats.0.cat_name }}
+                                    </p>
+                                    {% endif %}
+                                    {% endwith %}
+
+                                    {% with d=project.project_details %}
+                                    {% if d %}
+                                    {% if d.minprice or d.maxprice %}
+                                    <p class="project-type">
+                                        <span>Price</span>:
+                                        {% if d.minprice %}{{ d.min_price_tag }}{% endif %}{% if d.minprice and d.maxprice %} &ndash; {% endif %}{% if d.maxprice %}{{ d.max_price_tag }}{% endif %}
+                                    </p>
+                                    {% endif %}
+                                    {% if d.minarea or d.maxarea %}
+                                    <p class="project-type">
+                                        <span>Plot Size</span>:
+                                        {% if d.minarea %}{{ d.minarea }}{% endif %}{% if d.minarea and d.maxarea %} &ndash; {% endif %}{% if d.maxarea %}{{ d.maxarea }}{% endif %}{% if d.areaselect %} {{ d.get_areaselect_display }}{% endif %}
+                                    </p>
+                                    {% endif %}
+                                    {% endif %}
+                                    {% endwith %}
+                                </div>
+
+                                <p class="project-location" style="white-space:nowrap;">
+                                    {% if project.location %}{{ project.location.name }},{% endif %}
+                                    {% if project.city %}{{ project.city.name }}{% endif %}
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- CTA Buttons -->
+                        <div class="subchild-card-actions d-flex gap-2 mt-3">
+                            <a href="{{ project.get_absolute_url }}" class="subchild-btn-outline">View Details</a>
+                            <button class="subchild-btn-primary open-popup"
+                                    data-source="category_page"
+                                    data-project="{{ project.slug }}">
+                                Enquire Now
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-5">
+            <p class="section-description">No projects are listed in this category yet. Check back soon.</p>
+            <a href="/project/" class="subchild-btn-primary d-inline-block mt-3">View All Projects</a>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<!-- ===== INLINE STYLES ===== -->
+<style>
+    .subchild-page-content {
+        color: #444;
+        line-height: 1.8;
+        font-size: 15px;
+    }
+    .subchild-page-content h2,
+    .subchild-page-content h3 { margin-top: 1.4em; }
+
+    .subchild-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: var(--primary-color, #1a6e8e);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 3px;
+    }
+    .featured-image-wrapper { position: relative; }
+
+    .subchild-card-actions { flex-wrap: wrap; }
+
+    .subchild-btn-primary,
+    .subchild-btn-outline {
+        display: inline-block;
+        padding: 8px 18px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .4px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background .25s, color .25s, border-color .25s;
+        text-decoration: none;
+        line-height: 1.4;
+        border: none;
+    }
+    .subchild-btn-primary {
+        background: var(--primary-color, #1a6e8e);
+        color: #fff;
+    }
+    .subchild-btn-primary:hover { background: #135670; color: #fff; }
+
+    .subchild-btn-outline {
+        background: transparent;
+        color: var(--primary-color, #1a6e8e);
+        border: 1.5px solid var(--primary-color, #1a6e8e);
+    }
+    .subchild-btn-outline:hover {
+        background: var(--primary-color, #1a6e8e);
+        color: #fff;
+    }
+</style>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    /* Set per-project slug before popup.js reads window.currentProjectSlug */
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.open-popup[data-project]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                window.currentProjectSlug = this.dataset.project || '';
+            });
+        });
+    });
+</script>
+{% endblock %}

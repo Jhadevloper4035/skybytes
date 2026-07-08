@@ -1,0 +1,266 @@
+{% extends 'include/includes.html' %}
+{% load static %}
+{% block title %}Testimonials - SkyByte Developers{% endblock %}
+{% block meta_description %}Read success stories and testimonials from satisfied clients of SkyByte Developers. Watch video testimonials from happy customers and investors.{% endblock %}
+{% block meta_keywords %}SkyByte testimonials, client reviews, customer success stories, real estate testimonials{% endblock %}
+{% block og_title %}Testimonials - SkyByte Developers{% endblock %}
+{% block og_description %}Read success stories from satisfied clients of SkyByte Developers. Watch video testimonials from happy customers.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/about-us-banner.webp' %}{% endblock %}
+{% block og_image_alt %}SkyByte Developers Testimonials{% endblock %}
+{% block twitter_title %}Testimonials - SkyByte Developers{% endblock %}
+{% block twitter_description %}Read success stories from satisfied clients. Watch video testimonials from happy customers.{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/about-us-banner.webp' %}{% endblock %}
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Testimonials", "item": "{{ request.scheme }}://{{ request.get_host }}/testimonials/" }
+    ]
+}
+</script>
+{% endblock %}
+{% block content %}
+    <main>
+        <!-- Hero Section -->
+        <section class="testimonial-hero">
+            <div class="testimonial-hero-overlay"></div>
+            <div class="testimonial-hero-content">
+                <h1>What Our Clients Say</h1>
+                <p>Real stories from satisfied customers and investors</p>
+            </div>
+        </section>
+
+        <!-- Testimonial Stats -->
+        <section class="testimonial-stats">
+            <div class="maximum-width mx-auto">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 class="stat-number">2</h3>
+                        <p class="stat-text">Projects Ongoing</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">50+</h3>
+                        <p class="stat-text">Channel Associate</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">8.33</h3>
+                        <p class="stat-text">Acres Under Development</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">1+</h3>
+                        <p class="stat-text">Years of Excellence</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Text Testimonials Section -->
+        <section class="section testimonial-section bt">
+            <div class="maximum-width mx-auto">
+                <div class="testimonial-header">
+                    <span class="section-subtitle">Success Stories</span>
+                    <h2 class="section-heading">Client Testimonials</h2>
+                    <p>Hear directly from our clients about their experience with SkyByte Developers</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header-info">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Rajesh Kumar</h4>
+                                <p class="testimonial-role">Residential Plot Owner</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "SkyByte Developers provided exceptional transparency throughout my property investment journey. The quality of construction and customer service exceeded my expectations. Highly recommended!"
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header-info">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Priya Sharma</h4>
+                                <p class="testimonial-role">Commercial Plot Investor</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Best investment decision I made! SkyByte's professional team guided me through every step. The location and infrastructure were exactly as promised. Great returns on investment!"
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header-info">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Amit Patel</h4>
+                                <p class="testimonial-role">Property Buyer</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "From site visit to possession, everything was smooth and transparent. SkyByte's team was always available to answer my questions. My family loves our new home!"
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header-info">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Neha Gupta</h4>
+                                <p class="testimonial-role">Residential Investor</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Investing with SkyByte was a game-changer for my portfolio. Their integrity and professionalism stand out in the market. I've already referred multiple friends!"
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header-info">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Vikram Singh</h4>
+                                <p class="testimonial-role">Commercial Project Owner</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "SkyByte delivered my commercial space on time and within budget. The quality and design are premium. Perfect for my business growth. Highly satisfied!"
+                        </p>
+                    </div>
+
+                    <!-- Testimonial 6 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header-info">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-author">
+                                <h4>Divya Mehta</h4>
+                                <p class="testimonial-role">Family Home Owner</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Living in a SkyByte property is amazing! The quality of construction, amenities, and community feel are exceptional. We made the right choice!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Testimonials Section -->
+        <section class="section video-testimonial-section bt">
+            <div class="maximum-width mx-auto">
+                <div class="testimonial-header">
+                    <span class="section-subtitle">Client Stories</span>
+                    <h2 class="section-heading">Video Testimonials</h2>
+                    <p>Watch our satisfied clients share their experiences</p>
+                </div>
+
+                <div class="video-grid">
+                    <!-- Video 1 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe width="100%" height="300" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Client Success Story #1</h4>
+                            <p>Residential Investment Experience</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe width="100%" height="300" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Client Success Story #2</h4>
+                            <p>Commercial Project Experience</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe width="100%" height="300" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Client Success Story #3</h4>
+                            <p>Family Home Experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="testimonial-cta">
+            <div class="maximum-width mx-auto">
+                <h2>Ready to Become Our Next Success Story?</h2>
+                <p>Join thousands of satisfied clients who have invested with SkyByte Developers</p>
+                <a href="/contact-us/" class="cta-button">Get Started Today</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends "include/includes.html" %}
+{% load static %}
+
+{% block title %}Projects - SkyByte Developers{% endblock %}
+{% block meta_description %}Explore SkyByte Developers' portfolio of premier residential and commercial projects in Haryana. Find your ideal property with premium plots, apartments, and commercial spaces.{% endblock %}
+{% block meta_keywords %}SkyByte Projects, real estate Haryana, commercial plots Sonipat, residential apartments, plotted colony{% endblock %}
+
+{% block og_title %}Projects - SkyByte Developers{% endblock %}
+{% block og_description %}Explore SkyByte Developers' portfolio of premier residential and commercial projects in Haryana.{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/coming-soon-banner.jpeg' %}{% endblock %}
+{% block og_image_alt %}SkyByte Developers Projects{% endblock %}
+{% block twitter_title %}Projects - SkyByte Developers{% endblock %}
+{% block twitter_description %}Explore SkyByte Developers' portfolio of premier residential and commercial projects in Haryana.{% endblock %}
+{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/coming-soon-banner.jpeg' %}{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "{{ request.scheme }}://{{ request.get_host }}/project/" }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+            <section class="page-layout">
+            <!-- <div class="maximum-width container-fluid">
+                <div class="d-flex flex-column align-items-center">
+                
+                    <h1 class="page-title">Projects</h1>
+                    
+                </div>
+            </div> -->
+            <div>
+                <div class="w-100 h-100 overflow-hidden">
+                    <img src="{% static 'images/coming-soon-banner.jpeg' %}" alt="SkyByte Developers Projects - Banner" class="page-layout-img page-layout-full"
+                        style="object-position: bottom;">
+                </div>
+                <!-- <div class="about-nav d-flex gap-2 align-items-center justify-content-center mt-4">
+            
+                    <a href="#who" class="about-link nav-link">Who We Are</a>
+                    <a href="#what" class="about-link nav-link">What We Do</a>
+                    <a href="#team" class="about-link nav-link">Meet Our Team</a>
+            
+                </div> -->
+            </div>
+        </section>
+            <section class="section bt projects-section">
+
+            <div class="maximum-width mx-auto">
+
+                <!-- Header -->
+                <div class="projects-header">
+                    <div class="header-content">
+                        <span class="section-subtitle">
+                            Featured Projects
+                        </span>
+
+                        <h2 class="section-title section-heading">
+                            Discover your ideal property
+                        </h2>
+
+                        <p class="header-description">
+                            Explore a diverse portfolio of residential and commercial projects, each crafted to deliver
+                            comfort, convenience, and exceptional investment value.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="projects-stats">
+                    <div class="stat-box">
+                        <h3 class="stat-number">2</h3>
+                        <p class="stat-label">Project Ongoing</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3 class="stat-number">50+</h3>
+                        <p class="stat-label">Channel Associate</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3 class="stat-number">8.33</h3>
+                        <p class="stat-label">Acres Under Development</p>
+                    </div>
+                </div>
+
+                <!-- Grid -->
+                <div class="row margin-top gy-5 gx-md-4 gx-lg-5">
+                    <div class="col-md-6">
+                        <a href="/project/" class="project-card-link" style="text-decoration: none; color: inherit;">
+                            <div class="featured-card-new">
+                                <div class="featured-image-wrapper-new">
+                                    <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Developers Commercial Project">
+                                    <div class="project-badge commercial">Commercial</div>
+                                    <div class="card-overlay"></div>
+                                    <div class="view-btn-new">
+                                        <span class="cta-button">View Project →</span>
+                                    </div>
+                                </div>
+
+                                <div class="featured-info-new">
+                                    <h3 class="project-title-new">SkyByte Commercial Project</h3>
+                                    <div class="project-meta">
+                                        <span class="project-type-new">Commercial Plots</span>
+                                        <span class="project-location-new">📍 Sonipat, Haryana</span>
+                                    </div>
+                                    <p class="project-description">Premium commercial spaces designed for enterprises seeking strategic locations with modern infrastructure and prime connectivity.</p>
+                                    <div class="project-features">
+                                        <span class="feature-tag">Prime Location</span>
+                                        <span class="feature-tag">Modern Infrastructure</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-6">
+                        <a href="/project/skybyte-sector-80-sonipat/" class="project-card-link" style="text-decoration: none; color: inherit;">
+                            <div class="featured-card-new">
+                                <div class="featured-image-wrapper-new">
+                                    <img src="{% static 'images/coming-soon.jpg' %}" alt="SkyByte Developers Residential Project">
+                                    <div class="project-badge residential">Residential</div>
+                                    <div class="card-overlay"></div>
+                                    <div class="view-btn-new">
+                                        <span class="cta-button">View Project →</span>
+                                    </div>
+                                </div>
+
+                                <div class="featured-info-new">
+                                    <h3 class="project-title-new">SkyByte Residential Project</h3>
+                                    <div class="project-meta">
+                                        <span class="project-type-new">Residential Plots</span>
+                                        <span class="project-location-new">📍 Sonipat, Haryana</span>
+                                    </div>
+                                    <p class="project-description">Thoughtfully designed residential spaces where modern living meets serene surroundings, offering comfort, convenience, and lasting value.</p>
+                                    <div class="project-features">
+                                        <span class="feature-tag">Eco-Friendly</span>
+                                        <span class="feature-tag">Family-Oriented</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+{% endblock %}

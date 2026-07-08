@@ -1,0 +1,133 @@
+﻿{% extends 'include/includes.html' %}
+{% load static %}
+
+{% block title %}{{ blog.meta_title|default:blog.name }}{% endblock %}
+{% block meta_description %}{{ blog.meta_desc|default:blog.name }}{% endblock %}
+{% block meta_keywords %}{{ blog.keyword|default:'' }}{% endblock %}
+
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ blog.meta_title|default:blog.name }}{% endblock %}
+{% block og_description %}{{ blog.meta_desc|default:blog.name }}{% endblock %}
+{% block og_image %}{% if blog.blog_image %}{{ request.scheme }}://{{ request.get_host }}{{ blog.blog_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/blog-banner.webp' %}{% endif %}{% endblock %}
+{% block og_image_alt %}{{ blog.name }}{% endblock %}
+{% block twitter_title %}{{ blog.meta_title|default:blog.name }}{% endblock %}
+{% block twitter_description %}{{ blog.meta_desc|default:blog.name }}{% endblock %}
+{% block twitter_image %}{% if blog.blog_image %}{{ request.scheme }}://{{ request.get_host }}{{ blog.blog_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/blog-banner.webp' %}{% endif %}{% endblock %}
+
+{% block schema_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ blog.name|escapejs }}",
+    "description": "{{ blog.meta_desc|default:blog.name|escapejs }}",
+    "image": "{% if blog.blog_image %}{{ request.scheme }}://{{ request.get_host }}{{ blog.blog_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/banner/blog-banner.webp' %}{% endif %}",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
+    "datePublished": "{{ blog.created_at|date:'c' }}",
+    "dateModified": "{{ blog.updated_at|date:'c' }}",
+    "author": { "@type": "Organization", "name": "SkyByte Developers" },
+    "publisher": {
+        "@type": "Organization",
+        "name": "SkyByte Developers",
+        "logo": { "@type": "ImageObject", "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'logo/logo.png' %}" }
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/" },
+        { "@type": "ListItem", "position": 2, "name": "Blogs", "item": "{{ request.scheme }}://{{ request.get_host }}/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "{{ blog.name|escapejs }}", "item": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<section class="section bt">
+    <div class="container-fluid maximum-width mx-auto">
+        <div class="row px-lg-5">
+
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <h1>{{ blog.name }}</h1>
+
+                <div class="blog-img my-3">
+                    {% if blog.blog_image %}
+                    <img src="{{ blog.blog_image.url }}" alt="{{ blog.name }}" class="w-100">
+                    {% else %}
+                    <img src="{% static 'images/banner/blog-banner.webp' %}" alt="{{ blog.name }}" class="w-100">
+                    {% endif %}
+                </div>
+
+                <div class="text-end my-2">
+                    <h6>
+                        <i class="fa-solid fa-calendar me-1"></i>{{ blog.created_at|date:"F d, Y" }}
+                        {% if blog.category.all %}
+                        &nbsp;|&nbsp;
+                        {% for cat in blog.category.all %}
+                        <a href="{% url 'blog:blog_category' cat.slug %}">{{ cat.name }}</a>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </h6>
+                </div>
+
+                <div class="blog-detail-content mt-3">
+                    {{ blog.overview|safe }}
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4 mt-5 mt-lg-0">
+
+                <!-- Categories -->
+                {% if categories %}
+                <div class="latest-blog mb-4">
+                    <h5 class="latest-blog-title">Categories</h5>
+                    <ul class="footer-links mt-3">
+                        {% for category in categories %}
+                        <li>
+                            <a href="{% url 'blog:blog_category' category.slug %}">
+                                <i class="fa-solid fa-angle-right me-1"></i>{{ category.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- Recent Posts -->
+                {% if recent_posts %}
+                <div class="latest-blog">
+                    <h5 class="latest-blog-title">Latest Blogs</h5>
+                    {% for post in recent_posts %}
+                    <a href="{% url 'blog:blog_detail' post.slug %}" target="_blank">
+                        <div class="latest-blog-item">
+                            <div class="latest-blog-item-img">
+                                {% if post.blog_image %}
+                                <img src="{{ post.blog_image.url }}" alt="{{ post.name }}">
+                                {% else %}
+                                <img src="{% static 'images/banner/blog-banner.webp' %}" alt="{{ post.name }}">
+                                {% endif %}
+                            </div>
+                            <div class="latest-blog-item-content">
+                                <span><i class="fa-solid fa-calendar me-1"></i>{{ post.created_at|date:"M d, Y" }}</span>
+                                <h6>{{ post.name|truncatewords:8 }}</h6>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
