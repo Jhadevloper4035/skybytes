@@ -517,6 +517,8 @@ docker compose -f compose.production.yml logs nginx --tail=100</code></pre>
         <li>Make sure Docker is installed on the droplet.</li>
         <li>Make sure the workflow logs in to Docker Hub successfully.</li>
         <li>If the Docker Hub repository is private, confirm the token has pull access.</li>
+        <li>If the log says <code>WEB_IMAGE is required</code>, confirm <code>DOCKERHUB_REPOSITORY</code> exists in
+          GitHub Secrets and rerun the latest workflow.</li>
       </ul>
 
       <h3>CI build fails because of memory</h3>
