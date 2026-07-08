@@ -279,7 +279,13 @@ free -h</code></pre>
           </tr>
           <tr>
             <td><code>DROPLET_SSH_KEY</code></td>
-            <td>The full private key content from your local <code>~/.ssh/id_ed25519</code> file.</td>
+            <td>The full private key content from your local <code>~/.ssh/id_ed25519</code> file. Do not use
+              <code>id_ed25519.pub</code> and do not paste the <code>ssh -i ...</code> command.</td>
+          </tr>
+          <tr>
+            <td><code>DROPLET_SSH_PASSPHRASE</code></td>
+            <td>Only needed if your private key has a passphrase. Leave this secret absent for a key without a
+              passphrase.</td>
           </tr>
           <tr>
             <td><code>PROD_ENV_FILE</code></td>
@@ -304,6 +310,13 @@ free -h</code></pre>
         <strong>Important:</strong> never commit <code>~/.ssh/id_ed25519</code>, <code>.env</code>, passwords, or
         production documents to Git. Put them only in GitHub Secrets or on the droplet.
       </div>
+
+      <h3>How to copy <code>DROPLET_SSH_KEY</code></h3>
+      <p>The value must start with <code>-----BEGIN OPENSSH PRIVATE KEY-----</code> and end with
+        <code>-----END OPENSSH PRIVATE KEY-----</code>.</p>
+      <pre><code>cat ~/.ssh/id_ed25519</code></pre>
+      <p>Copy the full output into the GitHub secret named <code>DROPLET_SSH_KEY</code>, including the first and last
+        lines.</p>
     </section>
 
     <section>
@@ -513,8 +526,10 @@ docker compose -f compose.production.yml logs nginx --tail=100</code></pre>
       <ul>
         <li>Make sure <code>DROPLET_HOST</code> is <code>64.227.147.48</code>.</li>
         <li>Make sure <code>DROPLET_USER</code> is <code>root</code>.</li>
-        <li>Make sure <code>DROPLET_SSH_KEY</code> contains the full private key, including the first and last lines.
-        </li>
+        <li>Make sure <code>DROPLET_SSH_KEY</code> contains the full private key, including the first and last lines.</li>
+        <li>If the log says <code>ssh.ParsePrivateKey: ssh: no key found</code>, the secret is usually a public key,
+          an SSH command, empty text, or a key copied without the begin/end lines.</li>
+        <li>If your key has a passphrase, add <code>DROPLET_SSH_PASSPHRASE</code> as a GitHub secret.</li>
         <li>Confirm you can connect locally with <code>ssh -i ~/.ssh/id_ed25519 root@64.227.147.48</code>.</li>
       </ul>
     </section>

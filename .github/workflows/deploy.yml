@@ -64,6 +64,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Validate deployment secrets
+        env:
+          DROPLET_HOST: ${{ secrets.DROPLET_HOST }}
+          DROPLET_USER: ${{ secrets.DROPLET_USER || 'root' }}
+          DROPLET_SSH_KEY: ${{ secrets.DROPLET_SSH_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          PROD_ENV_FILE: ${{ secrets.PROD_ENV_FILE }}
+        run: |
+          test -n "$DROPLET_HOST" || { echo "::error::Missing DROPLET_HOST"; exit 1; }
+          test -n "$DROPLET_USER" || { echo "::error::Missing DROPLET_USER"; exit 1; }
+          test -n "$DROPLET_SSH_KEY" || { echo "::error::Missing DROPLET_SSH_KEY"; exit 1; }
+          test -n "$DOCKERHUB_USERNAME" || { echo "::error::Missing DOCKERHUB_USERNAME"; exit 1; }
+          test -n "$DOCKERHUB_TOKEN" || { echo "::error::Missing DOCKERHUB_TOKEN"; exit 1; }
+          test -n "$PROD_ENV_FILE" || { echo "::error::Missing PROD_ENV_FILE"; exit 1; }
+          case "$DROPLET_SSH_KEY" in
+            *"BEGIN OPENSSH PRIVATE KEY"*|*"BEGIN RSA PRIVATE KEY"*|*"BEGIN EC PRIVATE KEY"*) ;;
+            *)
+              echo "::error::DROPLET_SSH_KEY must contain the full private key file, not the public key or ssh command."
+              exit 1
+              ;;
+          esac
+
       - name: Prepare deploy folder
         uses: appleboy/ssh-action@v1.0.3
         env:
@@ -72,6 +95,7 @@ jobs:
           host: ${{ secrets.DROPLET_HOST }}
           username: ${{ secrets.DROPLET_USER || 'root' }}
           key: ${{ secrets.DROPLET_SSH_KEY }}
+          passphrase: ${{ secrets.DROPLET_SSH_PASSPHRASE }}
           envs: DEPLOY_PATH
           script: mkdir -p "$DEPLOY_PATH"
 
@@ -81,6 +105,7 @@ jobs:
           host: ${{ secrets.DROPLET_HOST }}
           username: ${{ secrets.DROPLET_USER || 'root' }}
           key: ${{ secrets.DROPLET_SSH_KEY }}
+          passphrase: ${{ secrets.DROPLET_SSH_PASSPHRASE }}
           target: ${{ secrets.DEPLOY_PATH || '/opt/skybyte_fullStack' }}
           overwrite: true
           source: docker,Makefile,compose.production.yml
@@ -97,6 +122,7 @@ jobs:
           host: ${{ secrets.DROPLET_HOST }}
           username: ${{ secrets.DROPLET_USER || 'root' }}
           key: ${{ secrets.DROPLET_SSH_KEY }}
+          passphrase: ${{ secrets.DROPLET_SSH_PASSPHRASE }}
           envs: DEPLOY_PATH,PROD_ENV_FILE,WEB_IMAGE,DOCKERHUB_USERNAME,DOCKERHUB_TOKEN
           script: |
             set -e
