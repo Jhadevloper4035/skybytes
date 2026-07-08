@@ -1,0 +1,89 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set image tag
+        run: echo "WEB_IMAGE=${{ secrets.DOCKERHUB_REPOSITORY }}:${{ github.sha }}" >> "$GITHUB_ENV"
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.WEB_IMAGE }}
+            ${{ secrets.DOCKERHUB_REPOSITORY }}:latest
+
+      - name: Package deployment files
+        env:
+          PROD_ENV_FILE: ${{ secrets.PROD_ENV_FILE }}
+        run: |
+          mkdir -p release
+          git archive --format=tar HEAD | tar -x -C release
+          printf '%s\n' "$PROD_ENV_FILE" > release/.env
+          printf '\nWEB_IMAGE=%s\n' "$WEB_IMAGE" >> release/.env
+          if ! grep -q '^MYSQL_IMAGE=' release/.env; then
+            printf 'MYSQL_IMAGE=mysql:8.4\n' >> release/.env
+          fi
+          tar -czf release.tar.gz -C release .
+
+      - name: Copy release to droplet
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: ${{ secrets.DROPLET_USER }}
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          passphrase: ${{ secrets.DROPLET_SSH_PASSPHRASE }}
+          port: ${{ secrets.DROPLET_SSH_PORT || 22 }}
+          source: release.tar.gz
+          target: /tmp/skybyte-release
+          rm: true
+
+      - name: Deploy on droplet
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: ${{ secrets.DROPLET_USER }}
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          passphrase: ${{ secrets.DROPLET_SSH_PASSPHRASE }}
+          port: ${{ secrets.DROPLET_SSH_PORT || 22 }}
+          script_stop: true
+          script: |
+            set -eu
+            DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+            mkdir -p "$DEPLOY_PATH" /var/www/certbot /etc/letsencrypt
+            tar -xzf /tmp/skybyte-release/release.tar.gz -C "$DEPLOY_PATH"
+            cd "$DEPLOY_PATH"
+            docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" -p "${{ secrets.DOCKERHUB_TOKEN }}"
+            if [ ! -f /etc/letsencrypt/live/skybytedevelopers.com/fullchain.pem ]; then
+              make ssl-init
+            fi
+            docker compose -f compose.production.yml config
+            make prod-pull
+            make status
